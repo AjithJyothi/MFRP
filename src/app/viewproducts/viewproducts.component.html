@@ -1,0 +1,85 @@
+
+  <div class="container">
+    <div class="col-sm-4">
+      <img [src]="product.image" >
+    </div>
+    <div class="col-sm-4" style="color: white;">
+      <h5 class="card-title">{{product.productname}}</h5>
+                    
+      <ul>
+        <li>{{product.productRam}}</li>
+        <li>{{product.productMemory}}</li>
+        <li>{{product.productscreensize}}</li>
+        <li>{{product.productdetails}}</li>
+        <li><b>Rs.{{product.productprice}}</b></li>
+      </ul>
+    </div>
+    <div class="col-sm-4" >
+      <div class="col-md-6 text-center" style="color: white;">
+        <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+              
+          <div class="form-group" hidden>
+            <label for="inputusername" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="inputproductname1" [ngModel]="username" readonly name="username" ngModel>
+        </div>
+                  <div class="form-group" hidden>
+                      <label for="inputusername" class="form-label">Product Name</label>
+                      <input type="text" class="form-control" id="inputproductname" [ngModel]="product.productname" readonly name="productname" ngModel>
+                  </div>
+                  <div class="form-group" hidden>
+                      <label for="inputusername" class="form-label">Product Specifications</label>
+                      <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productRam" readonly name="productRam" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productMemory" readonly name="productMemory" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productscreensize" readonly name="productscreensize" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productdetails" readonly name="productdetails" ngModel></ul>
+                  </div>
+                  <div class="form-group" hidden>
+                      <label for="inputusername" class="form-label">Product Price</label>
+                      <input type="number" class="form-control" id="inputproductprice" [ngModel]="product.productprice" readonly name="productprice" ngModel>
+                  </div>
+                  <div class="form-group pt-5" style="color: black;" hidden>
+                      <label for="exampleFormControlFile1" class="d-block"><strong>Upload Picture Url():</strong></label>
+                      <input type="text" class="form-control-file border-secondary" id="exampleFormControlFile1" [ngModel]="product.photo" readonly name="photo" ngModel >
+                      
+                    </div>
+       
+                  <div class="col-6">
+                      <button type="submit" class="btn btn-primary">Add Product</button>
+                    </div>
+                  
+
+                   
+               
+        </form>
+      </div>
+      
+      <button class="btn btn-warning" (click)="goto()">Back</button>
+    </div> 
+    </div>
+
+ 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+     
+    
+  
+     
+  
+ 
+  
+  
+  
+
+   

@@ -1,0 +1,44 @@
+<div class="container text-center">
+    
+      <div class="container" style="color: white;">
+        <button class="btn btn-success" (click)="goback()">Back</button>
+          <div class="row">
+            <div class="col-sm-4 " style="color: white;"  >
+              <div class="table"  style="color: white;">
+                <thead>
+                  <tr>
+                  <th>Product Name</th>
+                  <th>Product Ram</th>
+                  <th>Product Memory</th>
+                  <th>Product Screen</th>
+                  <th>Product Specs</th>
+                  <th>Product Price</th>
+                  
+                  <th>Delete</th>
+                  <th>Total Value</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let get of products; let i=index; ">
+                    <td>{{get.productname}}</td>
+                    <td>{{get.productRam}}</td>
+                    <td>{{get.productMemory}}</td>
+                    <td>{{get.productscreensize}}</td>
+                    <td>{{get.productdetails}}</td>
+                    <td >{{get.productprice}}</td>
+                    
+                    
+                    <td>
+                      <button class="btn btn-warning" (click)="deleteproduct(i)">X</button>
+                    </td>
+
+                    <td>{{total}}</td>
+  
+                  </tr>
+                </tbody>
+               
+              </div>
+              </div>
+            </div>
+          </div>
+        

@@ -1,0 +1,57 @@
+
+
+
+  <div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="color: white;">
+             
+                <p class="display-6 text-center text-secondary mt-2">User Registration form</p>
+                <form class="for row g-3"   #formRef="ngForm" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+                  
+                  <div class="col-12">
+                    <label for="inputUsername" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="inputUsername" placeholder="" name="ame" ngModel required #name="ngModel">
+                
+                    <!--Validation for address-->
+                 <span class="text-danger" *ngIf="(name.touched || formRef.submitted) && name.errors?.reuired">
+                  Name is required
+                </span>
+                  </div>
+                
+                  <!--Username-->
+                  <div class="col-12">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="inputUsername"  name="username" ngModel required #username="ngModel">
+                
+                    <!--Validation for address-->
+                 <span class="text-danger" *ngIf="(username.touched || formRef.submitted) && username.errors?.reuired">
+                User name is required
+                </span>
+                  </div>
+                
+                    <!--Password-->
+                    <div class="col-md-12">
+                      <label for="inputPassword" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="inputPassword" name="password" ngModel required  #password="ngModel">
+                      <!--Validation for password-->
+                    <span class="text-danger" *ngIf="(password.touched || formRef.submitted) && password.errors?.reuired">
+                      Password is required
+                    </span>
+                    </div>
+                  
+                
+                    
+                
+                    
+                
+                    <!--Register Button-->
+                    <div class="col-12 text-center">
+                      <button type="submit" class="btn btn-primary ">Register</button>
+                    </div>
+                  </form>
+
+                     
+            
+    </div>
+    <div class="col-md-3"></div>
+</div>

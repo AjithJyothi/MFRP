@@ -1,0 +1,65 @@
+<div class="container text-center">
+  <button class="btn btn-success float-end" (click)="goto()">Add Products</button></div>
+    <div class="container" style="color: white;">
+      
+        <div class="row">
+          <div class="col-sm-4 " style="color: white;"  >
+            <div class="table"  style="color: white;">
+              <thead>
+                <tr>
+                <th>Product Name</th>
+                <th>Product Ram</th>
+                <th>Product Screen</th>
+                <th>Product Specs</th>
+                <th>Product Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Total Value</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="Update==false">
+                <tr *ngFor="let get of courses; let i=index; ">
+                  <td>{{get.productname}}</td>
+                  <td>{{get.productRam}}</td>
+                  <td>{{get.productMemory}}</td>
+                  <td>{{get.productscreensize}}</td>
+                  <td>{{get.productdetails}}</td>
+                  <td >{{get.productprice}}</td>
+                  <td> <a  (click)="EditItem(i)" style="float: right;padding-right: 8px;"> View 
+                    <span class="glyphicon glyphicon-pencil"></span>  
+                  </a>
+                  </td>
+                  <td>
+                    <a  (click)="DeleteItem(i)" style="float: right;"> Add 
+                      <span class="glyphicon glyphicon-remove"></span>  
+                    </a>
+                  </td>
+
+                </tr>
+              </tbody>
+              <tbody *ngIf="Update==true">
+                <tr *ngFor="let get of courses;let i= index " style="color:black;">
+                  <td><input type="text" [value]="get.productname" #ref1></td>
+                  <td><input type="text" [value]="get.productRam" #ref2></td>
+                  <td><input type="text" [value]="get.productscreensize" #ref3></td>
+                  <td><input type="text" [value]="get.productdetails" #ref4></td>
+                  <td><input type="text" [value]="get.productprice" #ref5></td>
+                  
+                  <td> <a  (click)="EditItem(ref1,ref2,ref3,ref4,ref5,i)" style="float: right;padding-right: 8px;"> View 
+                    <span class="glyphicon glyphicon-pencil"></span>  
+                  </a>
+                  </td>
+                  <td>
+                    <a  (click)="DeleteItem(i)" style="float: right;"> Add 
+                      <span class="glyphicon glyphicon-remove"></span>  
+                    </a>
+                  </td>
+                  <td ><input type="text" [value]="get.productprice" readonly #ref></td>
+                 
+                </tr>
+              </tbody>
+            </div>
+            </div>
+          </div>
+        </div>
+      
