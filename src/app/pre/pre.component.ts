@@ -59,7 +59,7 @@ export class PreComponent implements OnInit {
       let userObj=this.courses[i]
       console.log(userObj)
       this.us.toview=userObj;
-      this.router.navigateByUrl("/viewproducts")
+    //  this.router.navigateByUrl("/viewproducts")
       console.log("product is ",userObj)
     }
   

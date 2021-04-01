@@ -1,35 +1,62 @@
+<div class="container">
 <div class="row mt-5">
     <div class="col-md-3"></div>
-    <div class="col-md-6 text-center" style="color: white;">
+    <div class="col-md-6 " style="border-style: solid; border-color: turquoise;">
               <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
                     
-                     
+                <div class="form-group">
+                  <label for="bookcategory" class="form-label">Category</label>
+                  <input type="text" class="form-control" id="category" name="category" ngModel>
+              </div>
                         <div class="form-group">
-                            <label for="inputusername" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="inputproductname" name="productname" ngModel>
-                        </div>
-                        <div class="form-group" style="color:white;">
-                            <label for="inputusername" class="form-label">Product Specifications</label>
-                            <ul> <label for="inputusername" class="form-label">Product Ram</label></ul>
-                            <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" name="productRam" ngModel></ul>
-                            <ul> <label for="inputusername" class="form-label">Product Memory</label></ul>
-                            <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" name="productMemory" ngModel></ul>
-                            <ul> <label for="inputusername" class="form-label">Product Screen Size</label></ul>
-                            <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" name="productscreensize" ngModel></ul>
-                            <ul> <label for="inputusername" class="form-label">Product details</label></ul>
-                            <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" name="productdetails" ngModel></ul>
+                            <label for="bookname" class="form-label">Book Name</label>
+                            <input type="text" class="form-control" id="bookname" name="bookname" ngModel>
                         </div>
                         <div class="form-group">
-                            <label for="inputusername" class="form-label">Product Price</label>
-                            <input type="number" class="form-control" id="inputproductprice" name="productprice" ngModel>
+                          <label for="author" class="form-label">Author</label>
+                          <input type="text" class="form-control" id="author" name="author" ngModel>
+                      </div>
+                      <div class="form-group">
+                        <label for="publisher" class="form-label">Publisher</label>
+                        <input type="text" class="form-control" id="publisher" name="publisher" ngModel>
+                    </div>
+                      
+                        <div class="form-group">
+                            <label for="price" class="form-label">Publish Date</label>
+                            <input type="date" class="form-control" id="publishdate" name="publishdate" ngModel>
                         </div>
-                        <div class="form-group pt-5">
-                            <label for="exampleFormControlFile1" class="d-block"><strong>Upload Picture Url():</strong></label>
-                            <input type="text" class="form-control-file border-secondary" id="exampleFormControlFile1" name="photo1" ngModel >
-                            
-                          </div>
 
-                          <div class="form-group">
+                        <div class="form-group">
+                          <label for="price" class="form-label">Language</label>
+                          <input type="text" class="form-control" id="language" name="language" ngModel>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="price" class="form-label">Binding</label>
+                        <input type="text" class="form-control" id="binding" name="binding" ngModel>
+                    </div>
+
+                    
+                    <div class="form-group">
+                      <label for="rating" class="form-label">Rating</label>
+                     
+                      <select class="form-select " id="validationCustom04" type="text" class="form-control" id="rating" name="rating" ngModel required>
+                        <option selected disabled value="">Rate Book</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                  </div>
+
+                      <div class="form-group">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" ngModel>
+                    </div>
+
+                        <div class="form-group">
+                          <label for="image" class="form-label">Cover Image</label>
                             <input type="file" class="formcontrol" (change)="incomingfile($event)" name="photo" accept='image/*' placeholder="Upload f
                             ile" >
                           </div>
@@ -37,10 +64,12 @@
                         <div class="col-6">
                             <button type="submit" class="btn btn-primary">Add Product</button>
                           </div>
+                         
 
                          
                      
               </form>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-3" ></div>
+</div>
 </div>

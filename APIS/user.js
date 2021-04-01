@@ -5,6 +5,9 @@ const bcryptjs=require("bcryptjs");
 //const { isJSDocUnknownTag } = require("typescript");
 const jwt=require("jsonwebtoken");
 
+
+const verifyToken=require("./middlewares/verifyToken")
+
 userApiObj.use(exp.json())
 
 //get request handler
@@ -22,11 +25,11 @@ userApiObj.get("/getuser/:usernameusername",errHandler( async (req,res,next)=>{
     
 }))*/
 
-userApiObj.get("/getactivity/:username",errHandler(async(req,res,next)=>{
+userApiObj.get("/getactivity/:username",verifyToken,errHandler(async(req,res,next)=>{
     console.log("printing from get activity")
     let userCollectionObj=req.app.get("userCollectionObj");
      activity=await userCollectionObj.find({username:req.params.username}).toArray();
-    console.log(activity)
+ 
     res.send({message:activity})
 }))
 
@@ -74,9 +77,10 @@ userApiObj.post("/register",errHandler( async(req,res,next)=>{
    userApiObj.post("/login",errHandler( async(req,res,next)=>{
        let userCollectionObj=req.app.get("userCollectionObj")
        let userObj=req.body;
-
+        console.log(userObj.username)
        let user=await userCollectionObj.findOne({username:userObj.username})
        //if user
+       
        if(user==null){
            res.send({"message":"Invalid username"})
        }
@@ -110,6 +114,7 @@ userApiObj.post("/forgetpassword",errHandler(async(req,res,next)=>
 
     let user=await userCollectionObj.findOne({username:userObj.username})
     //if user is existed
+    
     if(user!==null){
         let hash=await bcryptjs.hash(userObj.password1,6)
         let success=await userCollectionObj.updateOne({username:userObj.username},{$set:{

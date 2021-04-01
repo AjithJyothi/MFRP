@@ -23,7 +23,7 @@ username:any;
          this.courses= res["message"]
        },
        err=>{
-         alert("Something went wrong in Adding course")
+         alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
@@ -36,21 +36,29 @@ username:any;
    }
 
    onSubmit(formRef:any){
-    let userObj=formRef.value
+    this.router.navigateByUrl("/login")
+     if(this.username==null){
+      this.router.navigateByUrl("/login")
+      }
+        else{
+         
+          let userObj=formRef.value
     
-    console.log(userObj)
-        this.us.tocart(userObj).subscribe(
-          res=>{
-               
-                if(res["message"]=="product Added"){
-                  alert("Product Added Successfuly")
+          console.log(userObj)
+      
+              this.us.tocart(userObj).subscribe(
+                res=>{
+                     
+                      if(res["message"]=="product Added"){
+                        alert("Product Added Successfuly")
+                      }
+                },
+                err=>{
+                  alert("Something went wrong in Adding Product")
+                  console.log(err)
                 }
-          },
-          err=>{
-            alert("Something went wrong in Adding Product")
-            console.log(err)
-          }
-        )
+              )
+        }
         
   }
 }

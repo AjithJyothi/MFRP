@@ -1,6 +1,7 @@
+<div class="container">
 <div class="row mt-5">
     <div class="col-md-3"></div>
-    <div class="col-md-6" style="color: white;">
+    <div class="col-md-6 bg-light"  >
               <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
                      <!--Radio button-->
                      <div class="row">
@@ -10,21 +11,66 @@
 
                         <div class="form-group">
                             <label for="inputusername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="inputusername" name="username" ngModel>
+                            <input type="text" class="form-control" id="inputusername" autocomplete="off" name="username" ngModel>
+                          
                         </div>
 
                         <div class="form-group">
                             <label for="inputpassword" class="form-label">Password</label>
                             <input type="password" class="form-control" id="inputpassword" name="password" ngModel>
+                            
                         </div>
              
                         <div class="col-6">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                          
+                            <button type="submit" class="btn btn-info " data-toggle="modal" data-target="#myModal">submit</button>
                           </div>
+                         
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <h4 class="modal-title">Login Status</h4>
+          <button type="button" class="close float-end" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="text Danger">{{login}}</p>
+        </div>
+        <div class="modal-footer">
+          <button  class="btn btn-default"(click)="ifOk()" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
                          
                      
               </form>
+
+
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Login Status</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>{{login}}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
 </div>

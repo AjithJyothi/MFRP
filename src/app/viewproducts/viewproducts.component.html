@@ -1,22 +1,22 @@
 
   <div class="container">
     <div class="col-sm-4">
-      <img [src]="product.image" >
+      <img [src]="product.image" width="100%">
     </div>
-    <div class="col-sm-4" style="color: white;">
-      <h5 class="card-title">{{product.productname}}</h5>
+    <div class="col-sm-4" >
+      <h5 class="card-title"><b>{{product.bookname}}</b></h5>
                     
       <ul>
-        <li>{{product.productRam}}</li>
-        <li>{{product.productMemory}}</li>
-        <li>{{product.productscreensize}}</li>
-        <li>{{product.productdetails}}</li>
-        <li><b>Rs.{{product.productprice}}</b></li>
+        <li>{{product.author}}</li>
+        <li>{{product.publisher}}</li>
+        <li>{{product.publishdate}}</li>
+        <li>{{product.binding}}</li>
+        <li><b>Rs.{{product.price}}</b></li>
       </ul>
     </div>
     <div class="col-sm-4" >
       <div class="col-md-6 text-center" style="color: white;">
-        <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+        <form class="form row g-3 mt-5 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
               
           <div class="form-group" hidden>
             <label for="inputusername" class="form-label">Product Name</label>
@@ -24,18 +24,18 @@
         </div>
                   <div class="form-group" hidden>
                       <label for="inputusername" class="form-label">Product Name</label>
-                      <input type="text" class="form-control" id="inputproductname" [ngModel]="product.productname" readonly name="productname" ngModel>
+                      <input type="text" class="form-control" id="inputproductname" [ngModel]="product.bookname" readonly name="bookname" ngModel>
                   </div>
                   <div class="form-group" hidden>
                       <label for="inputusername" class="form-label">Product Specifications</label>
-                      <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productRam" readonly name="productRam" ngModel></ul>
-                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productMemory" readonly name="productMemory" ngModel></ul>
-                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productscreensize" readonly name="productscreensize" ngModel></ul>
-                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.productdetails" readonly name="productdetails" ngModel></ul>
+                      <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.author" readonly name="author" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.publisher" readonly name="publisher" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.publishdate" readonly name="publishdate" ngModel></ul>
+                      <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="product.rating" readonly name="rating" ngModel></ul>
                   </div>
                   <div class="form-group" hidden>
                       <label for="inputusername" class="form-label">Product Price</label>
-                      <input type="number" class="form-control" id="inputproductprice" [ngModel]="product.productprice" readonly name="productprice" ngModel>
+                      <input type="number" class="form-control" id="inputproductprice" [ngModel]="product.price" readonly name="price" ngModel>
                   </div>
                   <div class="form-group pt-5" style="color: black;" hidden>
                       <label for="exampleFormControlFile1" class="d-block"><strong>Upload Picture Url():</strong></label>

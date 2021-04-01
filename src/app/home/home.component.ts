@@ -12,7 +12,7 @@ username:any;
 products:any=[];
 toview:any;
 num;
-
+view;
 constructor(private us:UserService, private router:Router) { }
 
   ngOnInit(): void {
@@ -35,10 +35,11 @@ getproduct(){
       console.log(this.products)
       let cartnum:[]=this.products
       this.us.cartvalue=cartnum.length
+      console.log(cartnum.length)
       this.num=cartnum.length
     },
     err=>{
-      alert("Something went wrong in Adding course")
+      alert("Something went wrong in Adding product")
     })
 }
 
@@ -53,7 +54,7 @@ Logout(){
 
 viewcart(){
   if(this.username!=null)
- { this.router.navigateByUrl("/viewcart")}
+ { this.router.navigateByUrl("/cart")}
  else
  {
    this.router.navigateByUrl("/login")
@@ -66,7 +67,7 @@ viewcart(){
          this.courses= res["message"]
        },
        err=>{
-         alert("Something went wrong in Adding course")
+         alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
@@ -102,6 +103,7 @@ viewcart(){
     let userObj=this.courses[i]
     console.log(userObj)
     this.us.toview=userObj;
+    this.view=this.us.toview
     this.router.navigateByUrl("/viewproducts")
     console.log("product is ",userObj)
   }

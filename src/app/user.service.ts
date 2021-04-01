@@ -52,4 +52,8 @@ export class UserService {
     return this.hc.get("/admin/getproducts")
   }
 
+  getbook(category: string):Observable<any>{
+    return this.hc.get("/admin/getbooks/"+category );
+  }
+
 }

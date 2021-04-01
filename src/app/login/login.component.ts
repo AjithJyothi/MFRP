@@ -10,7 +10,8 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
 
   constructor(private us:UserService, private router:Router) { }
-
+  login;
+  status=false;
   ngOnInit(): void {
   }
 
@@ -28,25 +29,31 @@ export class LoginComponent implements OnInit {
 
     } 
     else{
+      this.status=true;
       this.us.loginUser(userCredObj).subscribe(
         res=>{
           if(res["message"]=="Logged in successfully"){
               //store token and username in localstorage
               localStorage.setItem("token",res["signedToken"])
               localStorage.setItem("username",res["username"])
-              alert(res["message"])
+              this.login= res["message"]
               //navigate to userdashboard
-              this.router.navigateByUrl("/home")
+            
           }
           else{
-          alert(res["message"])
+            this.login= res["message"]
           }
         },
         err=>{
-          alert("Something went wrong")
-          console.log(err)
+          this.login="Something went wrong"
+          
         }
       )
     }
+  }
+
+
+  ifOk(){
+    this.router.navigateByUrl("/home")
   }
 }

@@ -1,65 +1,70 @@
-<div class="container text-center">
-  <button class="btn btn-success float-end" (click)="goto()">Add Products</button></div>
-    <div class="container" style="color: white;">
-      
-        <div class="row">
-          <div class="col-sm-4 " style="color: white;"  >
-            <div class="table"  style="color: white;">
-              <thead>
-                <tr>
-                <th>Product Name</th>
-                <th>Product Ram</th>
-                <th>Product Screen</th>
-                <th>Product Specs</th>
-                <th>Product Price</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                <th>Total Value</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="Update==false">
-                <tr *ngFor="let get of courses; let i=index; ">
-                  <td>{{get.productname}}</td>
-                  <td>{{get.productRam}}</td>
-                  <td>{{get.productMemory}}</td>
-                  <td>{{get.productscreensize}}</td>
-                  <td>{{get.productdetails}}</td>
-                  <td >{{get.productprice}}</td>
-                  <td> <a  (click)="EditItem(i)" style="float: right;padding-right: 8px;"> View 
-                    <span class="glyphicon glyphicon-pencil"></span>  
-                  </a>
-                  </td>
-                  <td>
-                    <a  (click)="DeleteItem(i)" style="float: right;"> Add 
-                      <span class="glyphicon glyphicon-remove"></span>  
-                    </a>
-                  </td>
+<div class="container-fluid">
+  <button class="btn btn-success float-end" (click)="goto()">Add Products</button>
+</div>
 
-                </tr>
-              </tbody>
-              <tbody *ngIf="Update==true">
-                <tr *ngFor="let get of courses;let i= index " style="color:black;">
-                  <td><input type="text" [value]="get.productname" #ref1></td>
-                  <td><input type="text" [value]="get.productRam" #ref2></td>
-                  <td><input type="text" [value]="get.productscreensize" #ref3></td>
-                  <td><input type="text" [value]="get.productdetails" #ref4></td>
-                  <td><input type="text" [value]="get.productprice" #ref5></td>
-                  
-                  <td> <a  (click)="EditItem(ref1,ref2,ref3,ref4,ref5,i)" style="float: right;padding-right: 8px;"> View 
-                    <span class="glyphicon glyphicon-pencil"></span>  
-                  </a>
-                  </td>
-                  <td>
-                    <a  (click)="DeleteItem(i)" style="float: right;"> Add 
-                      <span class="glyphicon glyphicon-remove"></span>  
-                    </a>
-                  </td>
-                  <td ><input type="text" [value]="get.productprice" readonly #ref></td>
-                 
-                </tr>
-              </tbody>
+<!--
+<div class="container">
+  
+    <div class="col-sm-12">
+      <div class="row">
+        <div  *ngFor="let obj of courses">
+            <div *ngIf="obj.category=='FullStack'">
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="obj.image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+
+                </div>
+              </div>
             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let obj of courses">
+            <div *ngIf="obj.category=='NodeJS'">
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="obj.image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let obj of courses; let i= index" >
+          <div class="card mb-3"  style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]="obj.image" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                 
+                  
+                 
+                </div>      
+              </div>
             </div>
           </div>
         </div>
-      
+      </div> 
+    </div>
+ 

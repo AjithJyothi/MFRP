@@ -11,21 +11,33 @@ export class ProductdetailsComponent implements OnInit {
   constructor(private us:UserService, private router:Router) { }
   courses:any;
   Update:boolean=false;
+  products;
+ fullstack=[]
   ngOnInit(): void {
     this.getdata()
+    
   }
+
+ 
+
   getdata(){
     this.us.getproducts().subscribe(
        res=>{
             
          this.courses= res["message"]
+         console.log(this.courses)
        },
        err=>{
-         alert("Something went wrong in Adding course")
+         alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
    }
+
+   arrayset(){
+     
+   }
+
 userObj:any;
    onSubmit(formRef:any){
      this.userObj=formRef.value

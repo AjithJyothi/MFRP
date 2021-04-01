@@ -40,10 +40,10 @@ mc.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
 
 .then(client=>{
     //get database object
-    const databaseObject=client.db("shopping");
-   const userCollectionObj=databaseObject.collection("customers");
+    const databaseObject=client.db("mfrp");
+   const userCollectionObj=databaseObject.collection("user");
     const cartCollectionObj=databaseObject.collection("cart");
-    const adminCollectionObj=databaseObject.collection("admins");
+    const adminCollectionObj=databaseObject.collection("admin");
     //sharing collection object
     app.set("userCollectionObj",userCollectionObj)
 

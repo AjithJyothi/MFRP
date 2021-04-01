@@ -1,32 +1,35 @@
-  <nav class="navbar navbar-expand-lg navbar-inverse navbar-dark bg-dark">
+
+ 
+ <div class="container-fluid">
+ 
+ 
+ <nav class=" navbar navbar-expand-lg navbar-inverse bg-dark " style="border-style: solid; border-color: rgb(4, 185, 131); background-color: transparent;" >
     <div class="container-fluid" >
-      <a class="navbar-brand" routerLink="pre"> <i> AJ services</i></a>
+      <a class="navbar-brand active" routerLink="pre"> <i> Book Store</i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-           
-       
-
-        
-
         <ul class="navbar-nav ms-auto float-end ">
          
+         
+          
           <li class="nav-item">
-            <a class="nav-link" routerLink="register" >Register</a>
+            <a class="nav-link" routerLink="pre" routerLinkActive="active" ><i class="glyphicon glyphicon-home"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="login"> Login</a>
+            <a class="nav-link" routerLink="login"> Login <i class="glyphicon glyphicon-user"></i></a>
           </li>
+         
+
           <li class="nav-item">
-            <a class="nav-link" routerLink="pre" >Home</a>
+            <a class="nav-link active" routerLink="register" >Register <i class="glyphicon glyphicon-file"></i></a>
           </li>
           <li class="nav-item">
             <input type="text" class="nav-item  ms-auto" style="padding: 10px;" placeholder="Enter search Item ">
           </li>
           <li class="nav-item">
-            <button class="btn btn-success nav-item  ms-auto" style="padding-left: 5px; padding: 10px;">Search</button>
+            <button class=" nav-item  ms-auto" style=" border: transparent; padding-left: 15px; padding: 12px;"><i class="glyphicon glyphicon-search"></i></button>
           </li>
         </ul>
         
@@ -35,6 +38,7 @@
     </div>
   </nav>
 
+</div>
 
-
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  

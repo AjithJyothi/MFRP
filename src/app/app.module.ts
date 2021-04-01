@@ -10,8 +10,10 @@ import { ViewproductsComponent } from './viewproducts/viewproducts.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { HomeComponent } from './home/home.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,  HTTP_INTERCEPTORS} from '@angular/common/http';
 import { PreComponent } from './pre/pre.component';
+import { AuthorizationService } from './authorization.service';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { PreComponent } from './pre/pre.component';
     ViewcartComponent,
     ProductdetailsComponent,
     HomeComponent,
-    PreComponent
+    PreComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

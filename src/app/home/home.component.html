@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <button class="btn btn-info float-end" (click)="viewcart()">Cart Items {{num}}</button>
 <div class="dropdown float-end">
  
@@ -11,8 +12,8 @@
    
   </div>
 </div>
-
-<div class="container">
+</div>
+<div class="container" style="padding-top: 20px; border: turquoise; border-style: solid;">
    
   <div id="myCarousel" style="padding: 30px;" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -25,15 +26,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <img src="https://i.postimg.cc/1RMy3bJ2/Capture.png" alt="Los Angeles" style="width:100%;">
+        <img src="https://i.postimg.cc/zvyQ0Pj5/image.png" alt="Los Angeles" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="https://i.postimg.cc/TYbn6Y3T/car3.png" alt="Chicago" style="width:100%;">
+        <img src="https://i.postimg.cc/3wGPH65w/image.png" alt="Chicago" style="width:100%;">
       </div>
     
       <div class="item">
-        <img src="https://i.postimg.cc/wxZDZsHW/car2.png" alt="New york" style="width:100%;">
+        <img src="https://i.postimg.cc/WbJmSPMt/image.png" alt="New york" style="width:100%;">
       </div>
     </div>
 
@@ -49,7 +50,7 @@
   </div>
 
 
-    <div class="row">
+    <div class="row mt-5">
       <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of courses; let i= index" >
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
@@ -58,46 +59,50 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{get.productname}}</h5>
+                <h5 class="card-title">{{get.bookname}}</h5>
                   
                 <ul>
-                  <li>{{get.productRam}}</li>
-                  <li>{{get.productMemory}}</li>
-                  <li>{{get.productscreensize}}</li>
-                  <li>{{get.productdetails}}</li>
+                  <li>{{get.author}}</li>
+                  <li>{{get.publisher}}</li>
+                  <li>{{get.language}}</li>
+                  <li>{{get.rating}}</li>
                 </ul>
                 
-                <p class="card-text"><b>Rs.{{get.productprice}}</b></p>
+                <p class="card-text"><b>Rs.{{get.price}}</b></p>
                 <div class="col-md-6 text-center" style="color: white;">
                   <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
                         
                     <div class="form-group" hidden>
-                      <label for="inputusername" class="form-label">Product Name</label>
-                      <input type="text" class="form-control" id="inputproductname1" [ngModel]="username" readonly name="username" ngModel>
+                      <label for="inputusername" class="form-label">courses Name</label>
+                      <input type="text" class="form-control" id="inputcoursesname1" [ngModel]="username" readonly name="username" ngModel>
                   </div>
                             <div class="form-group" hidden>
-                                <label for="inputusername" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="inputproductname2" [ngModel]="courses[i].productname" readonly name="productname" ngModel>
+                                <label for="inputusername" class="form-label">courses Name</label>
+                                <input type="text" class="form-control" id="inputcoursesname" [ngModel]="get.bookname" readonly name="bookname" ngModel>
                             </div>
                             <div class="form-group" hidden>
-                                <label for="inputusername" class="form-label">Product Specifications</label>
-                                <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="courses[i].productRam" readonly name="productRam" ngModel></ul>
-                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails1" [ngModel]="courses[i].productMemory" readonly name="productMemory" ngModel></ul>
-                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails2" [ngModel]="courses[i].productscreensize" readonly name="productscreensize" ngModel></ul>
-                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails3" [ngModel]="courses[i].productdetails" readonly name="productdetails" ngModel></ul>
+                              <label for="inputusername" class="form-label">Quantity</label>
+                              <input type="number" class="form-control" id="inputcoursesname" [ngModel]="1" readonly name="quantity" ngModel>
+                          </div>
+                            <div class="form-group" hidden>
+                                <label for="inputusername" class="form-label">courses Specifications</label>
+                                <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.author" readonly name="author" ngModel></ul>
+                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.publisher" readonly name="publisher" ngModel></ul>
+                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.publishdate" readonly name="publishdate" ngModel></ul>
+                                <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.rating" readonly name="rating" ngModel></ul>
                             </div>
                             <div class="form-group" hidden>
-                                <label for="inputusername" class="form-label">Product Price</label>
-                                <input type="number" class="form-control" id="inputproductprice" [ngModel]="courses[i].productprice" readonly name="productprice" ngModel>
+                                <label for="inputusername" class="form-label">courses Price</label>
+                                <input type="number" class="form-control" id="inputcoursesprice" [ngModel]="get.price" readonly name="price" ngModel>
                             </div>
                             <div class="form-group pt-5" style="color: black;" hidden>
-                                <label for="exampleFormControlFile1" class="d-block"><strong>Upload Picture Url():</strong></label>
-                                <input type="text" class="form-control-file border-secondary" id="exampleFormControlFile1" [ngModel]="courses[i].photo" readonly name="photo" ngModel >
-                                
+                              <label for="image" class="form-label">Cover Image</label>
+                              
+                              <input type="text" class="form-control" id="inputcoursesprice" [ngModel]="get.image" readonly name="image" ngModel>
                               </div>
                  
                             <div class="col-6">
-                                <button type="submit" class="btn btn-primary">Add Product</button>
+                                <button type="submit" class="btn btn-primary">Add courses</button>
                               </div>
                   </form>
                 </div>
