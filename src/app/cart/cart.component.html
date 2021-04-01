@@ -1,6 +1,7 @@
 <p>cart works!</p>
 <div class="container">
-    <button class="btn btn-info" (click)="goback()">Back</button>
+    <button class="btn btn-info float-end" (click)="goback()">Back</button>
+    <h4>Total Cart Value: <b>Rs.{{total}}/-</b> </h4>
 </div>
 <div class="container">
     <div class="col-md-12 p-3" style="border-style: solid;" *ngFor="let obj of products; let i=index">

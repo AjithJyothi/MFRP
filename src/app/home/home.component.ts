@@ -83,7 +83,7 @@ viewcart(){
           res=>{
                
                 if(res["message"]=="product Added"){
-                  alert("Product Added Successfuly")
+                  alert("Product Added Successfully")
                   this.getproduct();
                 }
           },

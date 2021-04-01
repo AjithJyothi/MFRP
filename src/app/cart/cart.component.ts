@@ -9,19 +9,26 @@ import {Router} from '@angular/router';
 export class CartComponent implements OnInit {
   products:any;
   username:any;
-  total:any=0;
+  total=0;
   num;
+  inp;
   constructor(private us:UserService, private router:Router) { }
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username")
     this.getproduct();
+    this.totalprice()
+   
   }
  incr(i){
   this.products[i].quantity+=1
+  this.products[i].price+=this.products[i].price
+ this.inp=this.products[i].price
  }
  decr(i){
   this.products[i].quantity-=1
+  
+  
 }
   getproduct(){
     this.us.getproduct(this.username).subscribe(
@@ -32,11 +39,24 @@ export class CartComponent implements OnInit {
         let cartnum:[]=this.products
         this.us.cartvalue=cartnum.length
         console.log(cartnum.length)
+        
         this.num=cartnum.length
+        for(let i=0;i<this.num;i++)
+        {
+         this.total+=this.products[i].price
+         console.log(this.total)
+        }
       },
       err=>{
         alert("Something went wrong in Adding product")
       })
+  }
+  totalprice(){
+    for(let i=0;i<this.num;i++)
+    {
+     this.total+=this.products[i].price
+     console.log(this.total)
+    }
   }
   goback(){
     this.router.navigateByUrl("/home")
