@@ -17,9 +17,11 @@ export class UserService {
     return   this.hc.post("/user/activity",userObj)
     }
 
-  loginUser(userCredObj:object):Observable<any>{
-    return   this.hc.post("/user/login",userCredObj)
-  }
+    loginUser(userCredObj:object):Observable<any>{
+      console.log("service")
+      console.log(userCredObj)
+      return   this.hc.post("/user/login",userCredObj)
+    }
 
   createactivity(useractivityObj:object):Observable<any>{
     return this.hc.post("/user/activity",useractivityObj)
@@ -54,6 +56,14 @@ export class UserService {
 
   getbook(category: string):Observable<any>{
     return this.hc.get("/admin/getbooks/"+category );
+  }
+
+  myOrder(product:object):Observable<any>{
+     return this.hc.post("/myorder/addto",product);
+  }
+
+  viewOrder(username:string):Observable<any>{
+    return this.hc.get("/myorder/vieworder/"+username);
   }
 
 }

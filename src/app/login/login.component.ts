@@ -23,30 +23,31 @@ export class LoginComponent implements OnInit {
     let userCredObj=formRef.value;
     console.log(userCredObj)
     //if user
-   if(userCredObj.username=="admin" && userCredObj.password=="admin")
+   if(userCredObj.userId=="admin" && userCredObj.password=="admin")
    {
     this.router.navigateByUrl("/productdetails")    
 
     } 
     else{
-      this.status=true;
+      console.log("subscribe")
       this.us.loginUser(userCredObj).subscribe(
         res=>{
+          console.log(res["message"])
           if(res["message"]=="Logged in successfully"){
               //store token and username in localstorage
               localStorage.setItem("token",res["signedToken"])
               localStorage.setItem("username",res["username"])
-              this.login= res["message"]
+              alert(res["message"])
               //navigate to userdashboard
-            
+              this.router.navigateByUrl("/home")
           }
           else{
-            this.login= res["message"]
+          alert(res["message"])
           }
         },
         err=>{
-          this.login="Something went wrong"
-          
+          alert("Something went wrong")
+          console.log(err)
         }
       )
     }

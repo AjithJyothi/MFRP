@@ -1,18 +1,38 @@
+
+<div class="row bg-light">
+      <h1 style="text-align: center;color:blue;"><strong><b><i>Welcome {{username}}</i></b></strong></h1>
+</div>
 <div class="container-fluid">
 <button class="btn btn-info float-end" (click)="viewcart()">Cart Items {{num}}</button>
 <div class="dropdown float-end">
- 
- 
   <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{username}}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item " (click)="Logout()">Log Out</a>
     <a class="dropdown-item" (click)="viewcart()">Cart</a>
-   
+    <a class="dropdown-item" (click)="myOrders()">My Orders</a>
   </div>
 </div>
 </div>
+
+<div class="container mt-2" style="background-color: lightgray;" >
+  <nav class="navbar" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav " *ngFor="let obj of categories;">    
+      <li class="nav-item" style="display: inline-block;"  style="padding:0;margin-left:50px;"><a role="button" (click)="findcat(obj)">{{obj.ct}}   |</a></li>
+      </ul>
+  
+</div>
+</nav>
+     
+</div>
+
+
+
 <div class="container" style="padding-top: 20px; border: turquoise; border-style: solid;">
    
   <div id="myCarousel" style="padding: 30px;" class="carousel slide" data-ride="carousel">
@@ -50,7 +70,7 @@
   </div>
 
 
-    <div class="row mt-5">
+    <div class="row mt-5" *ngIf="bss">
       <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of courses; let i= index" >
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
@@ -113,6 +133,37 @@
         </div>
       </div>
     </div> 
+
+    <div class="col-sm-4 " style="padding-bottom: 20px;"  *ngFor="let get of catcourses; let i= index" >
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img [src]="get.image" width="100%" class="card-img" alt="..."  style="padding-left: 15px;  padding-top: 40px;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{get.bookname}}</h5>
+                
+              <ul>
+                <li>{{get.author}}</li>
+                <li>{{get.publisher}}</li>
+                <li>{{get.language}}</li>
+                <li>{{get.rating}}</li>
+              </ul>
+              
+              <p class="card-text"><b>Rs.{{get.price}}</b></p>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary">Add Product</button>
+              </div>
+      
+    <button class="btn btn-success float-end" (click)="viewItem(i)" >View</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
 </div>
 
 

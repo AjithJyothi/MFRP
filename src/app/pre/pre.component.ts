@@ -11,6 +11,9 @@ export class PreComponent implements OnInit {
   courses:any;
   username:any;
   toview:any;
+  bss:any=true;
+  catcourses:any=[];
+  categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
   constructor(private us:UserService, private router:Router) { }
   
     ngOnInit(): void {
@@ -62,6 +65,23 @@ export class PreComponent implements OnInit {
     //  this.router.navigateByUrl("/viewproducts")
       console.log("product is ",userObj)
     }
+
+    findcat(obj){
+      this.bss=false
+      let cat=obj.ct
+           console.log(cat);
+           this.us.getbook(cat).subscribe(
+            res=>{
+              this.catcourses= res["message"];
+              console.log(this.catcourses)
+              console.log("success")
+            },
+            err=>{
+              alert("Something went wrong")
+              console.log(err.message)
+            }
+           )
+     }
   
   
      addto(formRef){

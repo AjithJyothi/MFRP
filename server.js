@@ -18,6 +18,7 @@ const userApiObj=require("./APIS/user")
 const adminApiObj=require("./APIS/admin")
 
 const cartApiObj=require("./APIS/cart")
+const myorderApiObj=require("./APIS/myorder")
 
 
 const mc=require("mongodb").MongoClient;
@@ -33,6 +34,7 @@ app.use("/user",userApiObj)
 app.use("/cart",cartApiObj)
 
 app.use("/admin",adminApiObj)
+app.use("/myorder",myorderApiObj)
 
 const dburl=process.env.dburl
 
@@ -44,10 +46,12 @@ mc.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
    const userCollectionObj=databaseObject.collection("user");
     const cartCollectionObj=databaseObject.collection("cart");
     const adminCollectionObj=databaseObject.collection("admin");
+    const myorderCollectionObj=databaseObject.collection("myorder")
     //sharing collection object
     app.set("userCollectionObj",userCollectionObj)
 
     app.set("cartCollectionObj", cartCollectionObj)
+    app.set("myorderCollectionObj",myorderCollectionObj)
 
    // app.set("productCollectionObj",productCollectionObj)
    app.set("adminCollectionObj",adminCollectionObj)
