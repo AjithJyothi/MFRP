@@ -14,6 +14,8 @@ import {HttpClientModule,  HTTP_INTERCEPTORS} from '@angular/common/http';
 import { PreComponent } from './pre/pre.component';
 import { AuthorizationService } from './authorization.service';
 import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { CartComponent } from './cart/cart.component';
     ProductdetailsComponent,
     HomeComponent,
     PreComponent,
-    CartComponent
+    CartComponent,
+    ProfileComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,

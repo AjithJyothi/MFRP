@@ -1,7 +1,9 @@
 <div class="container">
 <div class="row mt-5">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 bg-light"  >
+    <div class="col-md-3">
+      <img src="https://i.postimg.cc/L56MrfyR/image.png" alt="">
+    </div>
+    <div class="col-md-6 "  >
               <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
                      <!--Radio button-->
                      <div class="row">
@@ -59,7 +61,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Login Status</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <p>{{login}}</p>
@@ -75,19 +77,5 @@
 </div>
 
 
-<button type="button" class="btn btn-primary" data-toggle="toast" data-target="#liveToast">Show live toast</button>
-
-
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
 
 </div>

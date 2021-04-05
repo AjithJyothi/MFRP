@@ -59,9 +59,12 @@ req.body.image=req.file.path;
 }))
 
 adminApiObj.get("/getbooks/:category",errHandler( async (req,res,next)=>{
-    console.log("from get books")
+   
     let adminCollectionObj=req.app.get("adminColletionObj")
-    let users=await adminCollectionObj.find({category:req.params.category}).toArray();
+    console.log(req.params.category)
+    //let users=await adminCollectionObj.find({category:req.params.category}).toArray();
+    users=await adminCollectionObj.find({category:req.params.category}).toArray();
+    console.log("from get books")
     console.log(users)
     res.send({message:users})
 }))

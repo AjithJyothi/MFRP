@@ -1,5 +1,5 @@
-<div class="container-fluid">
-<button class="btn btn-info float-end" (click)="viewcart()">Cart Items {{num}}</button>
+<div class="container">
+<button class="btn btn-info float-end" (click)="viewcart()"><span class="glyphicon glyphicon-shopping-cart"></span>{{num}}</button>
 <div class="dropdown float-end">
  
  
@@ -7,20 +7,21 @@
     {{username}}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item " (click)="gotoProfile()">My Profile</a>
+    <a class="dropdown-item" (click)="viewcart()">My Cart</a>
+    <a class="dropdown-item" (click)="gotoWishlist()">Wish List</a>
     <a class="dropdown-item " (click)="Logout()">Log Out</a>
-    <a class="dropdown-item" (click)="viewcart()">Cart</a>
    
   </div>
 </div>
 </div>
-<div class="container" style="padding-top: 20px; border: turquoise; border-style: solid;">
+<div class="container mt-2" style="background-color: turquoise; padding-top: 20px; border: turquoise; border-style: solid;">
    
   <div id="myCarousel" style="padding: 30px;" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!-- Wrapper for slides -->
@@ -29,9 +30,6 @@
         <img src="https://i.postimg.cc/zvyQ0Pj5/image.png" alt="Los Angeles" style="width:100%;">
       </div>
 
-      <div class="item">
-        <img src="https://i.postimg.cc/3wGPH65w/image.png" alt="Chicago" style="width:100%;">
-      </div>
     
       <div class="item">
         <img src="https://i.postimg.cc/WbJmSPMt/image.png" alt="New york" style="width:100%;">
@@ -51,21 +49,23 @@
 
 
     <div class="row mt-5">
+      <!---->
       <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of courses; let i= index" >
         <p> <div class="card mb-3" style="max-width: 540px;">
-          <div class="row no-gutters">
+          <div class="row no-gutters"style="" id="card">
             <div class="col-md-4">
               <img [src]="get.image" class="card-img" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{get.bookname}}</h5>
+              <button class="btn float-end" (click)="wishlist(get)" style="color: coral;"><span class="glyphicon glyphicon-heart " id="wishlist"></span></button> 
+                <h5 class="card-title"> <b>Book Name:</b> {{get.bookname}}</h5>
                   
                 <ul>
-                  <li>{{get.author}}</li>
-                  <li>{{get.publisher}}</li>
-                  <li>{{get.language}}</li>
-                  <li>{{get.rating}}</li>
+                  <li> <b>Author:</b> {{get.author}}</li>
+                  <li> <b>Publisher:</b> {{get.publisher}}</li>
+                  <li> <b>languages:</b> {{get.language}}</li>
+                  <li> <b>Rating</b> {{get.rating}}</li>
                 </ul>
                 
                 <p class="card-text"><b>Rs.{{get.price}}</b></p>

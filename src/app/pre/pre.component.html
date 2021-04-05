@@ -1,13 +1,12 @@
 
 
-<div class="container" style="border: turquoise; border-style: solid;">
+<div class="container" style="background-color: turquoise; border: turquoise; border-style: solid;">
    
   <div id="myCarousel" style="padding: 30px;" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!-- Wrapper for slides -->
@@ -16,9 +15,6 @@
         <img src="https://i.postimg.cc/zvyQ0Pj5/image.png" alt="Los Angeles" style="width:100%;">
       </div>
 
-      <div class="item">
-        <img src="https://i.postimg.cc/3wGPH65w/image.png" alt="Chicago" style="width:100%;">
-      </div>
     
       <div class="item">
         <img src="https://i.postimg.cc/WbJmSPMt/image.png" alt="New york" style="width:100%;">
@@ -38,9 +34,11 @@
 
 
     <div class="row">
-      <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of courses; let i= index" >
+   
+      
+      <div class="col-sm-4 "  style="padding-bottom: 20px;" *ngFor="let get of courses; let i= index" >
         <div class="card mb-3" style="max-width: 540px;">
-          <div class="row no-gutters">
+          <div class="row no-gutters" id="cards">
             <div class="col-md-4">
               <img [src]="get.image" width="100%" class="card-img" alt="..."  style="padding-left: 15px;  padding-top: 40px;">
             </div>
@@ -88,26 +86,39 @@
                               </div>
                   </form>
                 </div>
-                <button class="btn btn-success float-end" (click)="viewItem(i)" >View</button>
-                <button type="submit" class="btn btn-info " data-toggle="modal" data-target="#myModal">View</button>
+                <button class="btn btn-success float-end" (click)="viewItem(i)" >View</button>   
+                <button type="submit" class="btn btn-info " data-toggle="modal" (click)="viewItem(i)" data-target="#myModal">View</button>
                 <div class="modal fade" id="myModal" role="dialog">
                   <div class="modal-dialog">
                   
                     <!-- Modal content-->
                     <div class="modal-content">
-                      <div class="modal-header">
+                     <div class="modal-header">
                        
-                        <h4 class="modal-title">Login Status</h4>
+                        <h4 class="modal-title">Viewing details</h4>
+                        <img [src]="get.image" width="100%" class="card-img" alt="..."  style="padding-left: 15px;  padding-top: 40px;">
+                        <button type="button" class="close float-end btn-danger" data-dismiss="modal">&times;</button>
+                      </div>
+                    <div class="modal-body bg-dark" style="color: white;">
+                       <h5 class="card-title">{{courses[i].bookname}}</h5>
+                  
+                <ul>
+                  <li>{{get.author}}</li>
+                  <li>{{get.publisher}}</li>
+                  <li>{{get.language}}</li>
+                  <li>{{get.rating}}</li>
+                </ul>
+                
+                <p class="card-text"><b>Rs.{{get.price}}</b></p>
+                <button type="button" class="close btn-danget float-end" data-dismiss="modal">&times;</button>
+                       
+                        <!--  <h1>Prod details</h1>
                         <button type="button" class="close float-end" data-dismiss="modal">&times;</button>
+-->
                       </div>
-                      <div class="modal-body">
-                       
- <h1>Prod details</h1>
-
-                      </div>
-                      <div class="modal-footer">
+                     <!-- <div class="modal-footer">
                         <button  class="btn btn-default"(click)="ifOk()" data-dismiss="modal">Ok</button>
-                      </div>
+                      </div>-->
                     </div>
                     
                   </div>

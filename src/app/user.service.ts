@@ -52,8 +52,22 @@ export class UserService {
     return this.hc.get("/admin/getproducts")
   }
 
+  myOrder(product:object):Observable<any>{
+    return this.hc.post("/myorder/addto",product);
+ }
+ mylist(product:object):Observable<any>{
+  return this.hc.post("/wishlist/addto",product);
+}
+viewlist(username: string):Observable<any>{
+  return this.hc.get("/wishlist/viewlist/"+username);
+}
+vieworders(username: string):Observable<any>{
+  return this.hc.get("/myorders/vieworder/"+username);
+}
+
+
   getbook(category: string):Observable<any>{
-    return this.hc.get("/admin/getbooks/"+category );
+    return this.hc.get("/admin/getbooks/"+category);
   }
 
 }

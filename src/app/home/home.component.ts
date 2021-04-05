@@ -13,20 +13,122 @@ products:any=[];
 toview:any;
 num;
 view;
+one;two;three;four;five;six;
+category=["FullStack","NodeJS","angular","JS","HtmlCssAndRwd","MongoDB"]
 constructor(private us:UserService, private router:Router) { }
 
   ngOnInit(): void {
    
     this.username=localStorage.getItem("username")
+      if(this.username==null){this.router.navigateByUrl("/pre")}
     this.getdata()
     this.getproduct()
-   
+  // this. sorting()
     console.log(this.num)
     
    
     
   }
- 
+
+  sorting(){
+    //FullStack
+      this.us.getbook(this.category[0]).subscribe(
+        res=>{
+            
+          this.one= res["message"]
+          console.log(this.products)
+          
+        },
+        err=>{
+          alert("Something went wrong in Adding product")
+        })
+        //NodeJs
+        this.us.getbook(this.category[1]).subscribe(
+          res=>{
+              
+            this.two= res["message"]
+            console.log(this.products)
+            
+          },
+          err=>{
+            alert("Something went wrong in Adding product")
+          })
+          //angular
+          this.us.getbook(this.category[2]).subscribe(
+            res=>{
+                
+              this.three= res["message"]
+              console.log(this.products)
+              
+            },
+            err=>{
+              alert("Something went wrong in Adding product")
+            })
+             //js
+          this.us.getbook(this.category[3]).subscribe(
+            res=>{
+                
+              this.four= res["message"]
+              console.log(this.products)
+              
+            },
+            err=>{
+              alert("Something went wrong in Adding product")
+            })
+            //HtmlCssAndRwd
+            this.us.getbook(this.category[4]).subscribe(
+              res=>{
+                  
+                this.five= res["message"]
+                console.log(this.products)
+                
+              },
+              err=>{
+                alert("Something went wrong in Adding product")
+              })
+              //MongoDb
+              this.us.getbook(this.category[5]).subscribe(
+                res=>{
+                    
+                  this.six= res["message"]
+                  console.log(this.products)
+                  
+                },
+                err=>{
+                  alert("Something went wrong in Adding product")
+                })
+            
+
+
+    
+  }
+
+  wishlist(product){
+    if(this.username==null){
+      this.router.navigateByUrl("/login")
+    }
+  else{
+    product.username=this.username;
+   console.log(product)
+   this.us.mylist(product).subscribe(
+     res=>{
+       console.log(res["message"])
+      
+     },
+     err=>{
+       alert("Something went wrong")
+       console.log(err)
+     }
+   )
+    }
+  }
+
+ gotoProfile(){
+   this.router.navigateByUrl("/profile")
+ }
+ gotoWishlist(){
+  this.router.navigateByUrl("/wishlist")
+ }
 getproduct(){
   this.us.getproduct(this.username).subscribe(
     res=>{

@@ -6,12 +6,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PreComponent } from './pre/pre.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { ViewproductsComponent } from './viewproducts/viewproducts.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {path:"admin",component:AdminComponent},
+  {path:"profile",component:ProfileComponent},
+  {path:"wishlist",component:WishlistComponent},
   {path:"productdetails",component:ProductdetailsComponent},
   {path:"pre",component:PreComponent},
   {path:"home",component:HomeComponent},

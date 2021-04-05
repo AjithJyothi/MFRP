@@ -77,8 +77,8 @@ userApiObj.post("/register",errHandler( async(req,res,next)=>{
    userApiObj.post("/login",errHandler( async(req,res,next)=>{
        let userCollectionObj=req.app.get("userCollectionObj")
        let userObj=req.body;
-        console.log(userObj.username)
-       let user=await userCollectionObj.findOne({username:userObj.username})
+        console.log(userObj.userId)
+        let user=await userCollectionObj.findOne({userId:userObj.userId})
        //if user
        
        if(user==null){

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12 p-3" style="border-style: solid;" *ngFor="let obj of products; let i=index">
+              <div class="col-md-4"><img [src]="obj.image" width="100%"></div>
+              <div class="col-md-4">
+                <ul>
+                  <li><h1>Book Name : {{obj.bookname}}</h1></li>
+                  <li>Author: {{obj.author}}</li>
+                  <li>Publisher: {{obj.publisher}}</li>
+                  <li>Publish Date: {{obj.publishdate}}</li>
+                  <li>Rating: {{obj.rating}}</li>
+                </ul>
+              </div>
+              <div class="col-md-4">
+                <h2>Price: Rs.{{obj.price}}/-</h2>
+                
+              
+        
+               
+         
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

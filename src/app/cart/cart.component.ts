@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username")
+    if(this.username==null){this.router.navigateByUrl("/login")}
     this.getproduct();
     this.totalprice()
    
@@ -25,6 +26,27 @@ export class CartComponent implements OnInit {
   this.products[i].price+=this.products[i].price
  this.inp=this.products[i].price
  }
+
+ placeOrder(product){
+  if(this.username==null){
+    this.router.navigateByUrl("/login")
+  }
+else{
+  product.username=this.username;
+ console.log(product)
+ this.us.myOrder(product).subscribe(
+   res=>{
+     console.log(res["message"])
+    
+   },
+   err=>{
+     alert("Something went wrong")
+     console.log(err)
+   }
+ )
+  }
+}
+
  decr(i){
   this.products[i].quantity-=1
   
