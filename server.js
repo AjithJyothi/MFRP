@@ -18,8 +18,9 @@ const userApiObj=require("./APIS/user")
 const adminApiObj=require("./APIS/admin")
 
 const cartApiObj=require("./APIS/cart")
+const myorderApiObj=require("./APIS/myorder")
 
-const myorderApiObj=require("./APIS/myorders")
+//const myorderApiObj=require("./APIS/myorders")
 
 const wishlistApiObj=require("./APIS/wishlist")
 
@@ -37,6 +38,7 @@ app.use("/user",userApiObj)
 app.use("/cart",cartApiObj)
 
 app.use("/admin",adminApiObj)
+app.use("/myorder",myorderApiObj)
 
 app.use("/myorder",myorderApiObj)
 
@@ -59,11 +61,12 @@ mc.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
     app.set("userCollectionObj",userCollectionObj)
 
     app.set("cartCollectionObj", cartCollectionObj)
+    app.set("myorderCollectionObj",myorderCollectionObj)
 
    // app.set("productCollectionObj",productCollectionObj)
    app.set("adminCollectionObj",adminCollectionObj)
 
-   app.set("myorderCollectionObj",myorderCollectionObj)
+   //app.set("myorderCollectionObj",myorderCollectionObj)
 
    app.set("wishlistCollectionObj",wishlistCollectionObj)
 

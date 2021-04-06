@@ -69,5 +69,15 @@ adminApiObj.get("/getbooks/:category",errHandler( async (req,res,next)=>{
     res.send({message:users})
 }))
 
+adminApiObj.get("/getbooks/:category",errHandler( async(req,res,next)=>{
+    const adminCollectionObj=req.app.get("adminCollectionObj")
+    console.log("from getbooks")
+    console.log(req.params.category)
+    let success=await adminCollectionObj.find({category:req.params.category}).toArray()
+    console.log(success)
+    console.log("success")
+    res.send({message:success})
+}))
+
 //export adminApiObj
 module.exports=adminApiObj;

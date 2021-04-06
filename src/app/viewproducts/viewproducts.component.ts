@@ -35,6 +35,26 @@ username:any;
     else{this.router.navigateByUrl("/pre")}
    }
 
+   placeOrder(product){
+      if(this.username==null){
+        this.router.navigateByUrl("/login")
+      }
+    else{
+      product.username=this.username;
+     console.log(product)
+     this.us.myOrder(product).subscribe(
+       res=>{
+         console.log(res["message"])
+         alert(res["message"])
+       },
+       err=>{
+         alert("Something went wrong")
+         console.log(err)
+       }
+     )
+      }
+   }
+
    onSubmit(formRef:any){
     this.router.navigateByUrl("/login")
      if(this.username==null){

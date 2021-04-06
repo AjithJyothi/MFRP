@@ -16,6 +16,9 @@ import { AuthorizationService } from './authorization.service';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { VieworderComponent } from './vieworder/vieworder.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +32,20 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     PreComponent,
     CartComponent,
     ProfileComponent,
-    WishlistComponent
+    WishlistComponent,
+    VieworderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      positionClass:'toast-top-center',
+      closeButton:true
+    }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

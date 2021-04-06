@@ -22,14 +22,15 @@ export class RegisterComponent implements OnInit {
       number: ['', Validators.required],
       password: ['', Validators.required],
     });*/
-    this.userId = (Math.floor(Math.random() * 201))+8000;
+    //this.userId = (Math.floor(Math.random() * 201))+8000;
   }
   reg:any;
   onSubmit(formRef:any){
     let userObj=formRef.value
-    // this.userId = (Math.floor(Math.random() * 201))+8000;
+    this.userId = (Math.floor(Math.random() * 201))+8000;
     console.log(this.userId)
-    userObj.userId=this.userId;
+    let num=this.userId;
+    userObj.userId=num.toString();
     console.log(userObj)
     this.us.createUser(userObj).subscribe(
           res=>{

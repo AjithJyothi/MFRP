@@ -55,7 +55,7 @@ else{
   getproduct(){
     this.us.getproduct(this.username).subscribe(
       res=>{
-           console.log("hello worldd")
+           console.log("hello world")
         this.products= res.message
         console.log(this.products)
         let cartnum:[]=this.products

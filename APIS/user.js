@@ -74,35 +74,39 @@ userApiObj.post("/register",errHandler( async(req,res,next)=>{
 
 
 
-   userApiObj.post("/login",errHandler( async(req,res,next)=>{
-       let userCollectionObj=req.app.get("userCollectionObj")
-       let userObj=req.body;
-        console.log(userObj.username)
-        let user=await userCollectionObj.findOne({userId:userObj.username})
-       //if user
-       
-       if(user==null){
-           res.send({"message":"Invalid username"})
-       }
-       else{
-           //verify password
-         let status=await  bcryptjs.compare(userObj.password,user.password)
-         //if password matched
-         if(status==true){
-             //create a token
-            let token=await jwt.sign({username:user.username},"abcd",{expiresIn:100})
-             //send a token
-                  res.send({message:"Logged in successfully",signedToken:token,username:user.username})
-                  //send({message:"success"})
+userApiObj.post("/login",errHandler( async(req,res,next)=>{
+    console.log("entered")
+    let userCollectionObj=req.app.get("userCollectionObj")
+    let userObj=req.body;
+    console.log(userObj)
+         console.log("userapi")
+    let user=await userCollectionObj.findOne({userId:userObj.userId})
+    console.log(user)
+    console.log("user ......")
+    //if user
+    if(user==null){
+        res.send({"message":"Invalid userID"})
+    }
+    else{
+        //verify password
+      let status=await  bcryptjs.compare(userObj.password,user.password)
+      //if password matched
+      if(status==true){
+          //create a token
+         let token=await jwt.sign({username:user.username},"abcd",{expiresIn:100})
+          //send a token
+               res.send({message:"Logged in successfully",signedToken:token,username:user.username})
+               //send({message:"success"})
 
-         }
-         else{
-             res.send({"message":"Invalid password"})
-         }
-       }
-   }
+      }
+      else{
+          res.send({"message":"Invalid password"})
+      }
+    }
+}
 
-   ))
+))
+     
 
 
 userApiObj.post("/forgetpassword",errHandler(async(req,res,next)=>

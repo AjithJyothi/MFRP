@@ -15,6 +15,9 @@ num;
 view;
 one;two;three;four;five;six;
 category=["FullStack","NodeJS","angular","JS","HtmlCssAndRwd","MongoDB"]
+bss:any=true;
+  catcourses:any=[];
+  categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
 constructor(private us:UserService, private router:Router) { }
 
   ngOnInit(): void {
@@ -25,9 +28,7 @@ constructor(private us:UserService, private router:Router) { }
     this.getproduct()
   // this. sorting()
     console.log(this.num)
-    
-   
-    
+  
   }
 
   sorting(){
@@ -162,6 +163,16 @@ viewcart(){
    this.router.navigateByUrl("/login")
  }
 }
+
+myOrders(){
+  if(this.username!=null)
+ { this.router.navigateByUrl("/vieworder")}
+ else
+ {
+   this.router.navigateByUrl("/login")
+ }
+}
+
   getdata(){
     this.us.getproducts().subscribe(
        res=>{
@@ -175,6 +186,23 @@ viewcart(){
      )
    }
 
+
+   findcat(obj){
+    this.bss=false
+    let cat=obj.ct
+         console.log(cat);
+         this.us.getbook(cat).subscribe(
+          res=>{
+            this.catcourses= res["message"];
+            console.log(this.catcourses)
+            console.log("success")
+          },
+          err=>{
+            alert("Something went wrong")
+            console.log(err.message)
+          }
+         )
+   }
 
    onSubmit(formRef:any){
     let userObj=formRef.value
