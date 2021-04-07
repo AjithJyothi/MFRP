@@ -58,7 +58,7 @@ req.body.image=req.file.path;
 
 }))
 
-adminApiObj.get("/getbooks/:category",errHandler( async (req,res,next)=>{
+/*adminApiObj.get("/getbooks/:category",errHandler( async (req,res,next)=>{
    
     let adminCollectionObj=req.app.get("adminColletionObj")
     console.log(req.params.category)
@@ -67,7 +67,7 @@ adminApiObj.get("/getbooks/:category",errHandler( async (req,res,next)=>{
     console.log("from get books")
     console.log(users)
     res.send({message:users})
-}))
+}))*/
 
 adminApiObj.get("/getbooks/:category",errHandler( async(req,res,next)=>{
     const adminCollectionObj=req.app.get("adminCollectionObj")

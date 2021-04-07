@@ -69,10 +69,11 @@ vieworders(username: string):Observable<any>{
 
 
   getbook(category: string):Observable<any>{
-    return this.hc.get("/admin/getbooks/"+category);
+    return this.hc.get("/admin/getbooks/"+category );
   }
 
- 
+
+
 
   viewOrder(username:string):Observable<any>{
     return this.hc.get("/myorder/vieworder/"+username);
