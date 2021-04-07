@@ -48,10 +48,11 @@ export class LoginComponent implements OnInit {
               //alert(res["message"])
               //navigate to userdashboard
               this.router.navigateByUrl("/home")
-          }
+          } 
           else{
             this.status=2;
             this.login= res["message"]
+            this.toastr.success('user login', 'login success');
           }
         },
         err=>{
@@ -67,6 +68,7 @@ export class LoginComponent implements OnInit {
   ifOk(){
     if(this.status==1)
     this.router.navigateByUrl("/home")
+    
     
   }
 }

@@ -19,6 +19,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { VieworderComponent } from './vieworder/vieworder.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SearchComponent } from './search/search.component';
+import { FilterPipe } from './filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { ToastrModule } from 'ngx-toastr';
     CartComponent,
     ProfileComponent,
     WishlistComponent,
-    VieworderComponent
+    VieworderComponent,
+    SearchComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

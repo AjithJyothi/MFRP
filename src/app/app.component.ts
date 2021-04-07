@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'meanstack';
  username:any
  user:any=false;
+ search: any;
 
  constructor(private router:Router){}
 
@@ -36,5 +37,12 @@ viewcart(){
    this.router.navigateByUrl("/login")
  }
 }
+onSearch()
+  {
+    localStorage['searchValue'] = this.search
+    this.router.navigateByUrl('/search')
+  }
 
 }
+
+

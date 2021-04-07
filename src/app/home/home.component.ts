@@ -44,7 +44,7 @@ constructor(private us:UserService, private router:Router, private toastr: Toast
         err=>{
           alert("Something went wrong in Adding product")
         })
-        //NodeJs
+        //NodeJs 
         this.us.getbook(this.category[1]).subscribe(
           res=>{
               

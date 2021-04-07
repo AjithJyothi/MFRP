@@ -1,14 +1,16 @@
 
 <div class="row bg-light">
-      <h1 style="text-align: center;color:turquoise"><strong><b><i>Welcome {{username}}</i></b></strong></h1>
+      <h1 style="text-align: center;color:blue"><strong><b>Welcome {{username}}</b></strong></h1>
 </div>
 <div class="container-fluid">
-<button class="btn btn-info float-end" (click)="viewcart()"><img src="https://i.postimg.cc/FsC0hJJS/shopping-cart-empty-side-view.png" alt="" width="20px" height="20px"> {{num}}</button>
+<button class="btn btn-info float-end" (click)="viewcart()"><i class="fas fa-cart-plus"></i> {{num}}</button>
 <div class="dropdown float-end">
-  <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{username}}
+  <button class="btn btn-success dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i>
+    MyAccount
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  
+  
+  <div class="dropdown-menu" aria="dropdownMenuButton">
     <a class="dropdown-item " (click)="gotoProfile()">My Profile</a>
     <a class="dropdown-item" (click)="viewcart()">My Cart</a>
     <a class="dropdown-item" (click)="gotoWishlist()">Wish List</a>
@@ -125,7 +127,7 @@
                               </div>
                   </form>
                 </div>
-                <button class="btn btn-success" (click)="viewItem(i)">View</button>
+                <button class="btn btn-success abc" (click)="viewItem(i)">View</button>
               </div>      
             </div>
           </div>

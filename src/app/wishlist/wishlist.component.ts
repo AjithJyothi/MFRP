@@ -40,6 +40,8 @@ num;
         alert("Something went wrong in Adding product")
       })
   }
-
+  goback(){
+    this.router.navigateByUrl("/home")
+  }
 
 }

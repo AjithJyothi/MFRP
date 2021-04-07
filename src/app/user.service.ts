@@ -5,6 +5,9 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  registeruser(userCredObj: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private hc:HttpClient){}
   toview:any;
@@ -72,11 +75,13 @@ vieworders(username: string):Observable<any>{
     return this.hc.get("/admin/getbooks/"+category );
   }
 
-
-
-
   viewOrder(username:string):Observable<any>{
     return this.hc.get("/myorder/vieworder/"+username);
+    
   }
+  getdetails():Observable<any>{
+    return this.hc.get("/profile/getdetails")
+  }
+ 
 
 }

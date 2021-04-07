@@ -28,6 +28,7 @@ const routes: Routes = [
   {path:"viewcart",component:ViewcartComponent},
   {path:"viewproducts",component:ViewproductsComponent},
   {path:"vieworder",component:VieworderComponent},
+ 
    {path:"",redirectTo:"/pre",pathMatch:"full"}
   
 ];

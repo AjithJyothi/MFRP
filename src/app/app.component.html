@@ -12,20 +12,22 @@
          
           
           <li class="nav-item mt-1">
-            <a class="nav-link" routerLink="pre"  routerLinkActive="active" >Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
+            <a class="nav-link text" routerLink="pre"  routerLinkActive="active" >Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
           </li>
           <li class="nav-item mt-1">
             <a class="nav-link"  routerLink="login"> Login <img src="https://i.postimg.cc/8PYVjN2v/login-1.png"   alt="" height="18px" width="18px"> </a>
           </li>
           <li class="nav-item mt-1">
-            <a class="nav-link active" routerLink="register" >Register  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
+            <a class="nav-link " routerLink="register" >Register  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
           </li>
 
           <form class="d-flex mt-2">
-            <input class="form-control mt-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit"><img src="https://i.postimg.cc/d3bPN9mB/loupe.png"   alt="" height="23px" width="23px"></button>
+            <input [(ngModel)]="search" name="search" size="40" style="margin-top: 11px" class="form-control mr-sm-2" type="search" placeholder="Search for product" aria-label="search" >
+            <button (click)="onSearch()" style="margin-top: 10px " class="btn btn-info" type="submit"> <i class="fas fa-search"></i></button>
           </form>
         </ul>
+
+        
         
        
       </div>
