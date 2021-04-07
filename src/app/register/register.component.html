@@ -1,5 +1,5 @@
 
-  <div class="row mt-5">
+  <div class="row mt-5 py-5" >
    <div class="col-md-3"> </div>
    <div class="col-md-6" style="padding-top: 30px;  border-style: solid;  border-color: rgb(64,224,208);">
             
@@ -57,18 +57,16 @@
 
 <!-- Modal content-->
 <div class="modal-content">
-<div class="modal-header">
 
-<h4 class="modal-title">User Id is</h4>
+<div class="modal-body bg-dark" style="color: whitesmoke;">
+
+<p class="text Danger">User Id is {{displayId}}</p>
 <button type="button " class="close btn-danger float-end" data-dismiss="modal">&times;</button>
-</div>
-<div class="modal-body">
-<p class="text Danger">{{displayId}}</p>
-</div>
-<div class="modal-footer">
+
 <button  class="btn btn-default"(click)="ifOk()" data-dismiss="modal">Go to Login</button>
-<button  class="btn btn-default" data-dismiss="modal">cancle</button>
+<button  class="btn btn-default" data-dismiss="modal">cancel</button>
 </div>
+
 </div>
 
 </div>

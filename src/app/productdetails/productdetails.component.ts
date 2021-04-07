@@ -75,4 +75,7 @@ userObj:any;
    goto(){
     this.router.navigateByUrl("/admin")
    }
+   logout(){
+    this.router.navigateByUrl("/login")
+   }
 }

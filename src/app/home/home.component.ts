@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +19,7 @@ category=["FullStack","NodeJS","angular","JS","HtmlCssAndRwd","MongoDB"]
 bss:any=true;
   catcourses:any=[];
   categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
-constructor(private us:UserService, private router:Router) { }
+constructor(private us:UserService, private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
    
@@ -113,7 +114,7 @@ constructor(private us:UserService, private router:Router) { }
    console.log(product)
    this.us.mylist(product).subscribe(
      res=>{
-       console.log(res["message"])
+      this.toastr.success('book added to wishlist')
       
      },
      err=>{
@@ -214,7 +215,7 @@ myOrders(){
           res=>{
                
                 if(res["message"]=="product Added"){
-                  alert("Product Added Successfully")
+                  this.toastr.success('book added successfully')  
                   this.getproduct();
                 }
           },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ViewproductsComponent implements OnInit {
 
-  constructor(private us:UserService, private router:Router) { }
+  constructor(private us:UserService, private router:Router,private toastr: ToastrService) { }
   courses:any;
   product:any= this.us.toview;
 username:any;
@@ -56,7 +57,7 @@ username:any;
    }
 
    onSubmit(formRef:any){
-    this.router.navigateByUrl("/login")
+    this.router.navigateByUrl("/cart")
      if(this.username==null){
       this.router.navigateByUrl("/login")
       }
@@ -70,7 +71,9 @@ username:any;
                 res=>{
                      
                       if(res["message"]=="product Added"){
-                        alert("Product Added Successfuly")
+                      this.toastr.success('book added to cart') 
+
+
                       }
                 },
                 err=>{
