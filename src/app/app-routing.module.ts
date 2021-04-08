@@ -9,6 +9,7 @@ import { PreComponent } from './pre/pre.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { VieworderComponent } from './vieworder/vieworder.component';
 import { ViewproductsComponent } from './viewproducts/viewproducts.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:"cart",component:CartComponent},
   {path:"viewcart",component:ViewcartComponent},
   {path:"viewproducts",component:ViewproductsComponent},
+  {path:"updateproduct/:bookname",component:UpdateproductComponent},
   {path:"vieworder",component:VieworderComponent},
    {path:"",redirectTo:"/pre",pathMatch:"full"}
   
