@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav " *ngFor="let obj of categories;">    
-      <li class="nav-item" style="display: inline-block;"  style="padding:0;margin-left:50px;"><a role="button" (click)="findcat(obj)">{{obj.ct}}   |</a></li>
+      <li class="nav-item" style="display: inline-block;"  style="padding:0;margin-left:50px;"><a role="button" (click)="findcat(obj)"><b> {{obj.ct}}   </b></a></li>
       </ul>
   
 </div>
@@ -144,7 +144,7 @@
       </div>
     </div> 
 
-    <div class="col-sm-4 " style="padding-bottom: 20px;"  *ngFor="let get of catcourses; let i= index" >
+    <div class="col-sm-4 " style="padding-bottom: 20px;"  *ngFor="let get of catcourses | search:searchTerm; let i= index" >
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">

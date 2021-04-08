@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
    {
     this.toastr.success('admin login', 'login success');
   
+    
+  
 
     
     
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl("/home")
           }
           else{
+            this.toastr.error( 'login failed','username or password invalid');
             this.status=2;
             this.login= res["message"]
           }

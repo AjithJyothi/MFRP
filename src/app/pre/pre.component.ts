@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 @Component({
@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
   templateUrl: './pre.component.html',
   styleUrls: ['./pre.component.css']
 })
-export class PreComponent implements OnInit {
+export class PreComponent implements OnInit{
 
   courses:any;
   username:any;
@@ -14,6 +14,7 @@ export class PreComponent implements OnInit {
   bss:any=true;
   catcourses:any=[];
   categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
+  @Input() searchTerm:string;
   constructor(private us:UserService, private router:Router) { }
   
     ngOnInit(): void {
