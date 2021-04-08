@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <button class="btn btn-success float-end" (click)="goto()">Add Products</button>
+  <button class="btn btn-primary " (click)="goto()">Add Products</button>
+  <button class="btn btn-danger float-end" (click)="logout()">Logout</button>
 </div>
 
 <!--
@@ -56,8 +57,11 @@
                   <h5 class="card-title">{{obj.bookname}}</h5>
                   <p class="card-text">{{obj.author}}</p>
                   <p class="card-text">Rs.{{obj.price}}</p>
-                  <a href="#" class="btn btn-primary" [routerLink]="['/updateproduct/'+obj.bookname]">Edit</a>
-                  <button class="btn btn-danger" (click)="delete(obj)">delete</button>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                  <button class="btn btn-danger">delete</button>
+                 
+                  
+                 
                 </div>      
               </div>
             </div>

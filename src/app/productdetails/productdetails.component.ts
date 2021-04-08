@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ProductdetailsComponent implements OnInit {
 
-  constructor(private us:UserService, private router:Router) { }
+  constructor(private us:UserService, private router:Router, private toastr: ToastrService) { }
   courses:any;
   Update:boolean=false;
   products;
@@ -75,13 +76,17 @@ userObj:any;
    goto(){
     this.router.navigateByUrl("/admin")
    }
+   logout(){
+    this.router.navigateByUrl("/login")
+   }
 
    delete(obj){
     console.log(obj)
     this.us.deleteBook(obj).subscribe(
       res=>{
+        this.toastr.error( 'book removed');
             if(res["message"]=="book removed"){
-              alert("book removed")
+              //alert("book removed")
             }
             if(res["message"]=="book not found")
             alert("book not found")
