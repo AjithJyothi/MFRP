@@ -72,9 +72,20 @@ vieworders(username: string):Observable<any>{
     return this.hc.get("/admin/getbooks/"+category );
   }
 
+  getOneBook(bookname:string){
+    console.log(bookname);
+    return this.hc.get("/admin/onebook/"+bookname)
+  }
 
-  
 
+editBook(obj:object):Observable<any>{
+  return this.hc.put("/admin/updatebook",obj)
+ }
+
+ deleteBook(obj:object):Observable<any>{
+   console.log("from delete product",obj)
+   return this.hc.post("/admin/removebook",obj)
+ }
 
   viewOrder(username:string):Observable<any>{
     return this.hc.get("/myorder/vieworder/"+username);

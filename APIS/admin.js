@@ -79,6 +79,49 @@ adminApiObj.get("/getbooks/:category",errHandler( async(req,res,next)=>{
     res.send({message:success})
 }))
 
+adminApiObj.get("/onebook/:bookname",errHandler( async(req,res,next)=>{
+    console.log("entered")
+    const adminCollectionObj=req.app.get("adminCollectionObj")
+    let success=await adminCollectionObj.find({bookname:req.params.bookname}).toArray();
+    res.send({message:success})
+}))
+
+
+adminApiObj.put("/updatebook", errHandler ( async(req,res,next)=>{
+    let adminCollectionObj=req.app.get("adminCollectionObj")
+    let userObj=req.body;
+    console.log("adminApi " + userObj) 
+    let user=await adminCollectionObj.findOne({bookname:userObj.bookname})
+    console.log(user)
+    //if product is existed
+    if(user!==null){
+      let success =await adminCollectionObj.updateOne({bookname:userObj.bookname},{$set:{author:userObj.author,binding:userObj.binding,price:userObj.price,category:userObj.category,language:userObj.language,publishdate:userObj.publishdate, publisher:userObj.publisher, rating:userObj.rating , image:userObj.image
+    }})
+            res.send({message:"book updated"})
+    }
+    else{
+        res.send({message:"book not found"})
+    }      
+
+}))
+
+adminApiObj.post("/removebook", errHandler( async(req,res,next)=>{
+    let adminCollectionObj=req.app.get("adminCollectionObj");
+    let userObj=req.body;
+    console.log(userObj)
+    let user=await adminCollectionObj.findOne({bookname:userObj.bookname})
+    console.log(user)
+    //if product is existed
+    if(user!==null){
+    //add product
+            let success=await adminCollectionObj.deleteOne({bookname:userObj.bookname})
+            res.send({message:"book removed"})
+    }
+  else{
+      res.send({message:"book not found"})
+  }
+}))
+
 
 
 //export adminApiObj

@@ -75,7 +75,21 @@ userObj:any;
    goto(){
     this.router.navigateByUrl("/admin")
    }
-   logout(){
-    this.router.navigateByUrl("/login")
-   }
+
+   delete(obj){
+    console.log(obj)
+    this.us.deleteBook(obj).subscribe(
+      res=>{
+            if(res["message"]=="book removed"){
+              alert("book removed")
+            }
+            if(res["message"]=="book not found")
+            alert("book not found")
+      },
+      err=>{
+        alert("something went wrong")
+            console.log(err)
+      }
+    )
+  }
 }
