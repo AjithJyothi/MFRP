@@ -1,7 +1,40 @@
 
+
+
 <div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      <h4>Total Cart Value: <b>Rs.{{total}}/-</b> </h4>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-warning  mx-auto" data-toggle="modal" data-target="#myModal">Confirm Payment & Buy</button>
+    </div>
+    <div class="col">
     <button class="btn btn-info float-end" (click)="goback()">Back</button>
-    <h4>Total Cart Value: <b>Rs.{{total}}/-</b> </h4>
+  </div>
+</div>
+   
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content" style="background-color:green; color: white;">
+<div class="modal-header">
+
+<h4 class="modal-title" >Congratulations, Product ordered successfully</h4>
+<button type="button" class="close float-end" data-dismiss="modal">&times;</button>
+</div>
+<!-- <div class="modal-body">
+
+<h2>Congratulations, <br> Product ordered successfully</h2>
+</div>
+<div class="modal-footer">
+<button  class="btn btn-default" data-dismiss="modal">Ok</button>
+</div>-->
+</div>
+
+</div>
+</div>
 </div>
 <div class="container">
     <div class="col-md-12 p-3" style="border-style: solid;" *ngFor="let obj of products; let i=index">
@@ -12,8 +45,13 @@
           <li>Author: {{obj.author}}</li>
           <li>Publisher: {{obj.publisher}}</li>
           <li>Publish Date: {{obj.publishdate}}</li>
-          <li>Rating: {{obj.rating}}</li>
+          <li class="card-title pb-4" *ngIf="obj.rating">Rating: <span class="bg-success text-light px-1 rounded-pill ">{{obj.rating}}<i class="fas fa-star fa-xs"></i></span></li>
+          
         </ul>
+        <div class="col-3">
+                            
+          <button type="button button-danger" class="btn btn-danger " (click)="delete(obj)">Remove</button>
+        </div>
       </div>
       <div class="col-md-4">
         <h2>Price: Rs.{{obj.price}}/-</h2>
@@ -25,34 +63,8 @@
                 <button class="btn btn-info" style="width: 25%;" (click)="decr(i)"><i class="glyphicon glyphicon-minus"></i></button>
             </div>
            
+           
         </div>
-
-        <div class="col-6">
-                            
-          <button type="button" class="btn btn-info " (click)="placeOrder(obj)" data-toggle="modal" data-target="#myModal">Confirm Payment & Buy</button>
-        </div>
-       
-  <div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-  
-  <!-- Modal content-->
-  <div class="modal-content" style="background-color:black; color: white;">
-  <div class="modal-header">
-  
-  <h4 class="modal-title" >Congratulations, Product ordered successfully</h4>
-  <button type="button" class="close float-end" data-dismiss="modal">&times;</button>
-  </div>
- <!-- <div class="modal-body">
-    
-  <h2>Congratulations, <br> Product ordered successfully</h2>
-  </div>
-  <div class="modal-footer">
-  <button  class="btn btn-default" data-dismiss="modal">Ok</button>
-  </div>-->
-  </div>
-  
-  </div>
-  </div>
       </div>
     </div>
   </div>

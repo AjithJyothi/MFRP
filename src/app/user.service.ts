@@ -90,5 +90,14 @@ editBook(obj:object):Observable<any>{
   viewOrder(username:string):Observable<any>{
     return this.hc.get("/myorder/vieworder/"+username);
   }
+  getdetails(obj: string):Observable<any>{
+    return this.hc.get("/register//"+obj );
+  }
 
+  deleteCartProduct(obj):Observable<any>{
+    return this.hc.post("/cart/deleteproduct",obj);
+  }
+  getUser(id:any):Observable<any>{
+    return this.hc.get("/user/register/"+id)
+  }
 }
