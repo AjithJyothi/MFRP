@@ -4,6 +4,7 @@ const errHandler=require("express-async-handler");
 const bcryptjs=require("bcryptjs");
 //const { isJSDocUnknownTag } = require("typescript");
 const jwt=require("jsonwebtoken");
+const asyncHandler=require("express-async-handler");
 
 
 const verifyToken=require("./middlewares/verifyToken")
@@ -68,12 +69,6 @@ userApiObj.post("/register",errHandler( async(req,res,next)=>{
     console.log("user obj is", userobj)
 
 }))
-
-
-
-
-
-
 userApiObj.post("/login",errHandler( async(req,res,next)=>{
     console.log("entered")
     let userCollectionObj=req.app.get("userCollectionObj")
@@ -132,6 +127,14 @@ userApiObj.post("/forgetpassword",errHandler(async(req,res,next)=>
 
     }
    
+}))
+
+userApiObj.get("/getuser/:id",verifyToken,errHandler(async(req,res,next)=>{
+    //get user usercollection object
+    let userCollectionObject=req.app.get("userCollectionObj")
+    let userObj=await userCollectionObject.findOne({username:req.params.username})
+    res.send({message:"success",user:userObj})
+    
 }))
 
 
