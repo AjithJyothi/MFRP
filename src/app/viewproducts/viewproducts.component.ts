@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -10,19 +9,25 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class ViewproductsComponent implements OnInit {
 
-  constructor(private us:UserService,private spinner: NgxSpinnerService, private router:Router,private toastr: ToastrService) { }
+  constructor(private us:UserService, private router:Router,private toastr: ToastrService, private route:ActivatedRoute) { }
   courses:any;
-  product:any= this.us.toview;
-  username;
+  product:any=[];
 userId:any;
+bookId:any
   ngOnInit(): void {
     this.userId=localStorage.getItem("userId")
-    this.username=localStorage.getItem("username")
-    this.spinner.show();
-            setTimeout(() => {
-              this.spinner.hide();
-            }, 2000);
-    
+    this.bookId=this.route.snapshot.params['bookId'];
+     console.log("update.ts "+this.bookId)
+     this.us.getOneBook(this.bookId).subscribe(
+      res=>{
+        console.log(res["message"])
+            this.product=res["message"]
+            console.log("viewproduct ts "+this.product)
+      },
+      err=>{
+        console.log(err)
+      }
+    )
   }
   getdata(){
     this.us.getproducts().subscribe(
@@ -63,37 +68,22 @@ userId:any;
       }
    }
 
-   onSubmit(formRef){
-   console.log(formRef);
-    // this.router.navigateByUrl("/cart")
+   onSubmit(formRef:any){
+    this.router.navigateByUrl("/cart")
      if(this.userId==null){
       this.router.navigateByUrl("/login")
       }
         else{
          
-          let userObj=formRef
-          let obj={
-            username:this.username,
-            bookname:userObj.booktitle,
-            author:userObj.author,
-            userId:this.userId,
-            price:userObj.price,
-            publisher:userObj.publisher,
-            publishdate:userObj.publishdate,
-            rating:userObj.rating,
-           
-            
-            image:userObj.image,
-            quantity:1,
-            }
+          let userObj=formRef.value
     
-          console.log(obj)
+          console.log(userObj)
       
-              this.us.tocart(obj).subscribe(
+              this.us.tocart(userObj).subscribe(
                 res=>{
                      
                       if(res["message"]=="product Added"){
-                      this.toastr.success('Book added to cart') 
+                      this.toastr.success('book added to cart') 
 
 
                       }

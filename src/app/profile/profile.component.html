@@ -34,7 +34,9 @@
               <p class="form-control-static">{{ user.email }}</p>
               </div>
               
-<div class="container" style="height: 700px;" ><a class="btn btn-success" routerLink="/home">back</a></div>
+<div class="container" style="height: 700px;" >
+  <a href="#" class="btn btn-primary" [routerLink]="['/updateprofile/'+user.userId]">Edit Profile</a>
+  <a class="btn btn-success" routerLink="/home">back</a></div>
 
           
         </div>

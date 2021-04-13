@@ -10,6 +10,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { VieworderComponent } from './vieworder/vieworder.component';
 import { ViewproductsComponent } from './viewproducts/viewproducts.component';
@@ -27,8 +28,9 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"cart",component:CartComponent},
   {path:"viewcart",component:ViewcartComponent},
-  {path:"viewproducts",component:ViewproductsComponent},
+  {path:"viewproducts/:bookId",component:ViewproductsComponent},
   {path:"updateproduct/:bookId",component:UpdateproductComponent},
+  {path:"updateprofile/:userId",component:UpdateprofileComponent},
   {path:"vieworder",component:VieworderComponent},
    {path:"",redirectTo:"/pre",pathMatch:"full"}
   

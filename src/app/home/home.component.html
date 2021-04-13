@@ -31,6 +31,7 @@
         </ul>
        <ul class="nav-item d-flex ">
           <select name="searchby " style="width: 30%;" placeholder="Select Search" class="mt-4 form-select" id="searchby" [(ngModel)]="select">
+            <option value="All" selected>All</option>
             <option value="Category">Category</option>
             <option value="Bookname">Bookname</option>
             <option value="Author">Author</option>
@@ -119,7 +120,7 @@
                 
                 <p class="card-text"><b>Rs.{{get.price}}</b></p>
                 <button class="btn btn-warning" (click)="onSubmit(get)">Add to Cart</button>
-                <button class="btn btn-success" (click)="viewItem(i)">View</button>
+                <button class="btn btn-success" [routerLink]="['/viewproducts/'+get.bookId]">View</button>
               </div>      
             </div>
           </div>
@@ -150,7 +151,7 @@
                 <button class="btn" (click)="onSubmit(get)">Add to Cart</button>
               </div>
       
-    <button class="btn btn-success float-end" (click)="viewItem(i)" >View</button>
+    <button class="btn btn-success float-end" [routerLink]="['/viewproducts/'+get.bookId]" >View</button>
     </div>
     </div>
     </div>

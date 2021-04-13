@@ -25,6 +25,33 @@ userApiObj.get("/getuser/:usernameusername",errHandler( async (req,res,next)=>{
     
 }))*/
 
+userApiObj.get("/profile/:userId", errHandler(async(req,res,next)=>{
+    console.log("printing from profile")
+    let userCollectionObj=req.app.get("userCollectionObj");
+     activity=await userCollectionObj.findOne({userId:req.params.userId});
+     console.log(res)
+    res.send({message:activity})
+}))
+
+userApiObj.put("/updateprofile", errHandler ( async(req,res,next)=>{
+    let userCollectionObj=req.app.get("userCollectionObj")
+    let userObj=req.body;
+    console.log("userApi " + userObj) 
+    console.log(userObj.userId)
+    let user=await userCollectionObj.findOne({userId:userObj.userId})
+    console.log(user)
+    //if product is existed
+    if(user!==null){
+      let success =await userCollectionObj.updateOne({userId:userObj.userId},{$set:{email:userObj.email,firstname:userObj.firstname,lastname:userObj.lastname,number:userObj.number,password:userObj.password,username:userObj.username,
+    }})
+            res.send({message:"Profile updated"})
+    }
+    else{
+        res.send({message:"User Profile not found"})
+    }      
+
+}))
+
 userApiObj.get("/getactivity/:userId",verifyToken,errHandler(async(req,res,next)=>{
     console.log("printing from get activity")
     let userCollectionObj=req.app.get("userCollectionObj");
