@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <button class="btn btn-success float-end" (click)="goto()">Add Products</button>
+</div>
+
+<!--
+<div class="container">
+  
+    <div class="col-sm-12">
+      <div class="row">
+        <div  *ngFor="let obj of courses">
+            <div *ngIf="obj.category=='FullStack'">
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="obj.image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let obj of courses">
+            <div *ngIf="obj.category=='NodeJS'">
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="obj.image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let obj of courses; let i= index" >
+          <div class="card mb-3"  style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img [src]="obj.image" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{obj.bookname}}</h5>
+                  <p class="card-text">{{obj.author}}</p>
+                  <p class="card-text">Rs.{{obj.price}}</p>
+                  <a href="#" class="btn btn-primary" [routerLink]="['/updateproduct/'+obj.bookId]">Edit</a>
+                  <button class="btn btn-danger" (click)="delete(obj)">delete</button>
+                </div>      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+ 

@@ -1,0 +1,75 @@
+<div class="container">
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 " style="border-style: solid; border-color: turquoise;">
+              <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+                    
+                <div class="form-group">
+                  <label for="bookcategory" class="form-label">Category</label>
+                  <input type="text" class="form-control" id="category" name="category" ngModel>
+              </div>
+                        <div class="form-group">
+                            <label for="bookname" class="form-label">Book Name</label>
+                            <input type="text" class="form-control" id="bookname" name="bookname" ngModel>
+                        </div>
+                        <div class="form-group">
+                          <label for="author" class="form-label">Author</label>
+                          <input type="text" class="form-control" id="author" name="author" ngModel>
+                      </div>
+                      <div class="form-group">
+                        <label for="publisher" class="form-label">Publisher</label>
+                        <input type="text" class="form-control" id="publisher" name="publisher" ngModel>
+                    </div>
+                      
+                        <div class="form-group">
+                            <label for="price" class="form-label">Publish Date</label>
+                            <input type="date" class="form-control" id="publishdate" name="publishdate" ngModel>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="price" class="form-label">Language</label>
+                          <input type="text" class="form-control" id="language" name="language" ngModel>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="price" class="form-label">Binding</label>
+                        <input type="text" class="form-control" id="binding" name="binding" ngModel>
+                    </div>
+
+                    
+                    <div class="form-group">
+                      <label for="rating" class="form-label">Rating</label>
+                     
+                      <select class="form-select " id="validationCustom04" type="text" class="form-control" id="rating" name="rating" ngModel required>
+                        <option selected disabled value="">Rate Book</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                  </div>
+
+                      <div class="form-group">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" ngModel>
+                    </div>
+
+                        <div class="form-group">
+                          <label for="image" class="form-label">Cover Image</label>
+                            <input type="file" class="formcontrol" (change)="incomingfile($event)" name="photo" accept='image/*' placeholder="Upload f
+                            ile" >
+                          </div>
+             
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                          </div>
+                         
+
+                         
+                     
+              </form>
+    </div>
+    <div class="col-md-3" ></div>
+</div>
+</div>
