@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <a class="btn btn-success" routerLink="/home">back</a>
-  <button class="btn btn-success float-end" (click)="goto()">Add Products</button>
-  <a class="dropdown-item " style="text-decoration: none;" (click)="Logout()">Log Out</a>
+  <a class="btn btn-success float-end m-2" routerLink="/home">back</a>
+  <button class="btn btn-success float-end m-2" (click)="goto()">Add Products</button>
+  <a class="btn btn-success float-end m-2" style="text-decoration: none;" (click)="Logout()">Log Out</a>
 </div>
 <!--
 <div class="container">
@@ -57,8 +57,8 @@
                   <h5 class="card-title">{{obj.bookname}}</h5>
                   <p class="card-text">{{obj.author}}</p>
                   <p class="card-text">Rs.{{obj.price}}</p>
-                  <a href="#" class="btn btn-primary" [routerLink]="['/updateproduct/'+obj.bookId]">Edit</a>
-                  <button class="btn btn-danger" (click)="delete(obj)">delete</button>
+                  <a href="#" class="btn btn-primary m-2" [routerLink]="['/updateproduct/'+obj.bookId]">Edit</a>
+                  <button class="btn btn-danger m-2" (click)="delete(obj)">Delete</button>
                 </div>      
               </div>
             </div>

@@ -103,7 +103,7 @@
                 
                 <p class="card-text"><b>Rs.{{get.price}}</b></p>
                 <button class="btn btn-warning" (click)="onSubmit(get)">Add to Cart</button>
-                <button class="btn btn-success" (click)="viewItem(i)">View</button>
+                <button class="btn btn-success" [routerLink]="['/viewproducts/'+get.bookId]" >View</button>
               
                
                 <div class="modal fade" id="myModal" role="dialog">
@@ -173,7 +173,7 @@
                 <button type="submit" class="btn btn-primary">Add Book</button>
               </div>
       
-    <button class="btn btn-success float-end" (click)="viewItem(i)" >View</button>
+    <button class="btn btn-success float-end" [routerLink]="['/viewproducts/'+get.bookId]"  >View</button>
     </div>
     </div>
     </div>
