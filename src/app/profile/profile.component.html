@@ -1,0 +1,57 @@
+<div class="card" style="width: 75%;">
+  <div class="card-body">
+  
+      
+       <div class="col-md-6">
+  
+        <h1 class="form-signin-heading">My profile</h1>
+        
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-3 control-label">UserId:</label>
+            <p class="form-control-static">{{ userId }}</p>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">UserName:</label>
+            <p class="form-control-static">{{ user.username }}</p>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Firstname:</label>
+            <p class="form-control-static">{{ user.firstname }}</p>
+          
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label bold">Lastname:</label>
+            <p class="form-control-static">{{ user.lastname }}</p>
+          
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">PhoneNo:</label>
+            <p class="form-control-static">{{ user.number }}</p>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">EmailId:</label>
+              <p class="form-control-static">{{ user.email }}</p>
+              </div>
+              
+<div class="container" style="height: 700px;" >
+  <a href="#" class="btn btn-primary" [routerLink]="['/updateprofile/'+user.userId]">Edit Profile</a>
+  <a class="btn btn-success" routerLink="/home">back</a></div>
+
+          
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<div class="container" style="height: 700px;" ><a class="btn btn-success float-end" routerLink="/home">back</a></div>

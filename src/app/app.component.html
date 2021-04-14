@@ -1,0 +1,191 @@
+ 
+ <!--<nav class=" navbar navbar-expand-lg navbar-inverse bg-dark " style="border-style: solid; border-color: rgb(4, 185, 131); background-color: transparent;" >
+    <div class="container-fluid" >
+      <img src="https://i.postimg.cc/652svFLG/books-1.png"   alt="" width="45px" height="45px">
+      <a class="navbar-brand active" routerLink="pre"> Book Store</a>
+      <button style="color: white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="glyphicon glyphicon-th-list"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto float-end ">
+         
+         
+          
+          <li class="nav-item mt-1">
+            <a class="nav-link" routerLink="pre"  routerLinkActive="active" >Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
+          </li>
+          <li class="nav-item mt-1">
+            <a class="nav-link"  routerLink="login"> Login <img src="https://i.postimg.cc/8PYVjN2v/login-1.png"   alt="" height="18px" width="18px"> </a>
+          </li>
+          <li class="nav-item mt-1">
+            <a class="nav-link active" routerLink="register" >Register  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
+          </li>
+
+          <div class="col-sm-4 mx-auto">
+            <select name="searchby" class="form-select" id="searchby" [(ngModel)]="select">
+                <option value="Category">Category</option>
+                <option value="Bookname">Bookname</option>
+            </select>
+            <input type="text"class="form-control mt-5" placeholder="search by title" [(ngModel)]="searchTerm">
+        </div>
+
+          <form class="d-flex mt-2">
+            <button class="btn btn-outline-success" type="submit"><img src="https://i.postimg.cc/d3bPN9mB/loupe.png"   alt="" height="23px" width="23px"></button>
+          </form>
+        </ul>
+        
+       
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container" style="padding-top: 20px; border: turquoise; border-style: solid;">
+  <div class="row mt-5" >
+    <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of products | search : searchTerm: select; let i=" index >
+      <p> <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters"style="" id="card">
+          <div class="col-md-4">
+            <img [src]="get.image" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+            <button class="btn float-end" (click)="wishlist(get)" style="color: coral;"><span class="glyphicon glyphicon-heart " id="wishlist"></span></button> 
+              <h5 class="card-title"> <b>Book Name:</b> {{get.bookname}}</h5>
+                
+              <ul>
+                <li> <b>Author:</b> {{get.author}}</li>
+                <li> <b>Publisher:</b> {{get.publisher}}</li>
+                <li> <b>languages:</b> {{get.language}}</li>
+                <li> <b>Rating</b> {{get.rating}}</li>
+              </ul>
+              
+              <p class="card-text"><b>Rs.{{get.price}}</b></p>
+              <div class="col-md-6 text-center" style="color: white;">
+                <form class="form row g-3 " #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+                      
+                  <div class="form-group" hidden>
+                    <label for="inputusername" class="form-label">courses Name</label>
+                    <input type="text" class="form-control" id="inputcoursesname1" [ngModel]="username" readonly name="username" ngModel>
+                </div>
+                          <div class="form-group" hidden>
+                              <label for="inputusername" class="form-label">courses Name</label>
+                              <input type="text" class="form-control" id="inputcoursesname" [ngModel]="get.bookname" readonly name="bookname" ngModel>
+                          </div>
+                          <div class="form-group" hidden>
+                            <label for="inputusername" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="inputcoursesname" [ngModel]="1" readonly name="quantity" ngModel>
+                        </div>
+                          <div class="form-group" hidden>
+                              <label for="inputusername" class="form-label">courses Specifications</label>
+                              <ul style="list-style:square"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.author" readonly name="author" ngModel></ul>
+                              <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.publisher" readonly name="publisher" ngModel></ul>
+                              <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.publishdate" readonly name="publishdate" ngModel></ul>
+                              <ul style="list-style: none;"> <input type="text" class="form-control" id="inputproductdetails" [ngModel]="get.rating" readonly name="rating" ngModel></ul>
+                          </div>
+                          <div class="form-group" hidden>
+                              <label for="inputusername" class="form-label">courses Price</label>
+                              <input type="number" class="form-control" id="inputcoursesprice" [ngModel]="get.price" readonly name="price" ngModel>
+                          </div>
+                          <div class="form-group pt-5" style="color: black;" hidden>
+                            <label for="image" class="form-label">Cover Image</label>
+                            
+                            <input type="text" class="form-control" id="inputcoursesprice" [ngModel]="get.image" readonly name="image" ngModel>
+                            </div>
+               
+                          <div class="col-6">
+                              <button type="submit" class="btn btn-primary">Add Book</button>
+                            </div>
+                </form>
+              </div>
+              <button class="btn btn-success" (click)="viewItem(i)">View</button>
+            </div>      
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>-->
+
+
+    <router-outlet></router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="square-jelly-box"><p style="font-size: 20px; color: white">Loading...</p></ngx-spinner>
+
+
+
+
+
+    <section class="py-3">
+      <!-- Footer -->
+      <footer class="bg-dark text-white text-center" style="background-color: black;">
+        <!-- Grid container -->
+        <div class="container p-4">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase"><b>tech bookstore</b></h5>
+    
+              <p>This  Online Bookstore Contains Five Categories Of Books
+                They Are Full Stack Developer,AngularJs,NodeJs,Modern JavaScript,Html,css&Rwd,MongoDb 
+              </p>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase"><b>connect</b></h5>
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <img src="https://i.postimg.cc/MG6WDj5B/facebook.png"   alt="" width="20px" height="20px">
+                  <a href="#!" class="text-white">Facebook</a>
+                </li>
+                <li>
+                  <img src="https://i.postimg.cc/pTnXhMkc/twitter.png"   alt="" width="20px" height="20px">
+                  <a href="#!" class="text-white">Twitter</a>
+                </li>
+                <li>
+                  <img src="https://i.postimg.cc/L5cPYVzL/instagram.png"   alt="" width="20px" height="20px">
+                  <a href="#!" class="text-white">Instagram</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-0"><B>Address</B></h5>
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <img src="https://i.postimg.cc/sxgm4z0y/location.png"   alt="" width="20px" height="20px">
+                  <a href="#!" class="text-white">23-7,elcon it park,chennai</a>
+                </li>
+              </ul>
+              <h5 class="text-uppercase mb-0"><B>contact</B></h5>
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <img src="https://i.postimg.cc/kgY22mWK/contact.png"   alt="" width="20px" height="20px">
+                  <a href="#!" class="text-white">100-547-9874,onlinebookstore.com</a>
+                </li>
+              </ul>
+            </div>
+            
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: black">
+          © 2021 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">Bookstore.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </section>

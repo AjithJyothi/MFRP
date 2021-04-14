@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-md-12" *ngFor="let obj of products; let i=index">
+    <div class="col-md-4"><img [src]="obj.image" width="100%"></div>
+    <div class="col-md-4">
+      <ul>
+        <li><h1>Book Name : {{obj.bookname}}</h1></li>
+        <li>Author: {{obj.author}}</li>
+        <li>Publisher: {{obj.publisher}}</li>
+        <li>Publish Date: {{obj.publishdate}}</li>
+        <li>Rating: {{obj.rating}}</li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Price: Rs.{{obj.price}}/-</h2>
+      <button class="btn btn-lg btn-primary"> Buy</button>
+      <div class="col-6">
+                          
+        <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Confirm Payment & Buy</button>
+      </div>
+     
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+
+<h4 class="modal-title">Purchase Details</h4>
+<button type="button" class="close float-end" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+  <p>{{obj.bookname}}</p>
+<p class="text ">{{obj.price}}</p>
+<h2>Product ordered successfully</h2>
+</div>
+<div class="modal-footer">
+<button  class="btn btn-default" data-dismiss="modal">Ok</button>
+</div>
+</div>
+
+</div>
+</div>
+    </div>
+  </div>
+</div>
