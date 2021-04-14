@@ -1,0 +1,81 @@
+
+  <div class="row mt-5 py-5" >
+   <div class="col-md-3"> </div>
+   <div class="col-md-6" style="padding-top: 30px;  border-style: solid;  border-color: rgb(64,224,208);">
+            
+               <p class="display-6 text-center text-secondary mt-2">User Registration form</p>
+               <form class="for row g-3"   #formRef="ngForm" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+                 
+                 <div class="form-group mt-10" >
+                   <label class="form-label" for="username"><b>First Name</b></label>
+                  <input  type="text" placeholder="First Name" class="form-control" id="firstname" name="firstname" ngModel required #firstname="ngModel" >
+                  <span class="text-danger" *ngIf="(firstname.touched || formRef.submitted) && firstname.errors?.required">First name is required</span>
+              
+                </div>
+                <div class="form-group mt-2" >
+                   <label  class="form-label" for="username"><b>Last Name</b></label>
+                   <input  type="text"  placeholder="Last Name" class="form-control" id="lastname" name="lastname" ngModel required #lastname="ngModel">
+                   <span class="text-danger" *ngIf="(lastname.touched || formRef.submitted) && lastname.errors?.required">Last name is required</span>
+                </div>
+                <div class="form-group mt-2" >
+                   <label class="form-label" for="username"><b>Email ID</b></label>
+                   <input  type="email"  placeholder="Email Id@gmail.com" class="form-control" id="email" name="email" ngModel required #email="ngModel">
+                   <div *ngIf="(email.invalid&&(email.touched||email.dirty))" class="text-danger">
+                    <span class="text-danger" *ngIf="(email.errors?.required)">Email is required</span>
+                   <!-- <span *ngIf="(email.errors?.pattern)" class="text-danger">Password should contain @ ex:-abc@gmail.com</span>-->
+                    </div>
+                </div>
+               <div class="form-group mt-2" >
+                  <label class="form-label" for="username"><b>User Name</b></label>
+                  <input  type="text"  placeholder="User Name" class="form-control" id="username" name="username" ngModel required #username="ngModel">
+                  <span class="text-danger" *ngIf="(username.touched || formRef.submitted) && username.errors?.required">User name is required</span>
+               </div>
+               <div class="form-group mt-2" >
+                 <label class="form-label" for="number"><b>Phone number</b></label>
+                 <input  type="tel"  placeholder="User Name" class="form-control" id="number" name="number" ngModel maxlength="10" minlength="10" required #number="ngModel">
+                 <div class="text-danger" *ngIf="(number.invalid && (number.touched ||number.dirty))">
+                    <span *ngIf="number.errors?.required" class="text-danger">Phone Number name is required</span>
+                    <span class="text-danger" *ngIf="number.errors?.maxlength || number.errors?.minlength">Phone number shold be 10 digits</span>
+                    </div>
+              </div>
+               <div  class="form-group mt-2">
+                <label class="form-label" for="password"><b>Password</b></label>
+                <input  type="password"  placeholder="**********" class="form-control" id="password" name="password" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}" ngModel required #password="ngModel">
+                <div *ngIf="(password.invalid&&(password.touched||password.dirty))" class="text-danger">
+                <span class="text-danger" *ngIf="(password.errors?.required)">Password is required</span>
+                <span *ngIf="(password.errors?.pattern)" class="text-danger">Password should be 8 characters, 1 Upper case letter, 1 lower case letter and 1 digit</span>
+                </div>
+             </div>
+            
+             <div class="col-6">
+                          
+               <button type="submit" class="btn btn-info " data-toggle="modal" data-target="#myModal">submit</button>
+             </div>
+            
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+
+<div class="modal-body bg-dark" style="color: whitesmoke;">
+
+<p class="text Danger">User Id is {{displayId}}</p>
+<button type="button " class="close btn-danger float-end" data-dismiss="modal">&times;</button>
+
+<button  class="btn btn-default"(click)="ifOk()" data-dismiss="modal">Go to Login</button>
+<button  class="btn btn-default" data-dismiss="modal">cancel</button>
+</div>
+
+</div>
+
+</div>
+</div>
+            
+                 </form>
+
+                    
+           
+   </div>
+   <div class="col-md-3"></div>
+</div>

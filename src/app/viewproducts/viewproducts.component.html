@@ -1,0 +1,49 @@
+
+  <div class="container">
+    <div class="col-sm-4">
+      <img [src]="product.image" width="100%">
+    </div>
+    <div class="col-sm-4" >
+      <h5 class="card-title"><b>{{product.bookname}}</b></h5>
+                    
+      <ul>
+        <li>{{product.author}}</li>
+        <li>{{product.publisher}}</li>
+        <li>{{product.publishdate}}</li>
+        <li>{{product.binding}}</li>
+        <li><b>Rs.{{product.price}}</b></li>
+      </ul>
+    </div>
+   
+    <button class="btn btn-success" (click)="onSubmit(product)">Add to Cart</button>
+    <button  class="btn btn-primary" (click)="placeOrder(product)">Buy now</button>
+      
+    <button class="btn btn-warning" (click)="goto()">Back</button>
+    </div>
+
+ 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+     
+    
+  
+     
+  
+ 
+  
+  
+  
+
+   
