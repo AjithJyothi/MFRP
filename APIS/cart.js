@@ -27,15 +27,27 @@ cartApiObj.get("/getproduct/:userId",errHandler(async(req,res,next)=>{
     res.send({message:products})
 }))
 
-cartApiObj.delete("/deleteproduct/:productname",errHandler(async (req,res,next)=>{
-    
-  
-    
-   let user=await cartCollectionObj.removeOne({productname:req.params.productname})
-    res.send({message:"Product details deleted"})
+
+cartApiObj.post("/deleteproduct",errHandler(async(req,res,next)=>{
    
-    
+    let cartCollectionObj = req.app.get("cartCollectionObj");
+    let cartObj =  req.body;
+   
+    //console.log("user object is",cartObj);
+    //check for user in db
+    let product = await cartCollectionObj.findOne({bookname:cartObj.bookname});
+
+    //product is there
+    if(products!==null){
+        let remove=await cartCollectionObj.deleteOne({bookname:cartObj.bookname});
+        res.send({message:"Book removed from cart successfully"});
+    }
+    else{
+        res.send({message:"book not found in usercart"})
+    }
+
 }))
+
 
 
 

@@ -1,20 +1,9 @@
 #card:hover {
   
-  color:rgb(7, 1, 1);
-  height: 300px;
+  color:black;
+  height: 400px;
+  align-content: center;
 }
 #wishlist:visited {
   color: rgb(197, 21, 51);
-}
-#cat:active{
-  background-color: aqua;
-}
-.nav-link{
-  text-decoration: none;
-}
-
-
-.card {
-  display: table-cell;
-  padding: 16px;
 }

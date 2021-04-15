@@ -19,7 +19,7 @@ searchTerm:string;
 
   ngOnInit(): void {  
     this.username=localStorage.getItem("username")
-    this.router.navigateByUrl("/pre")
+    
     if(this.username!=null){
        this.user=true;
     }

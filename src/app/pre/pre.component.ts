@@ -33,13 +33,12 @@ export class PreComponent implements OnInit {
   viewcart(){
     this.router.navigateByUrl("/login")
   }
-    getdata(){
+    getdata(){ this.spinner.show();
       this.us.getproducts().subscribe(
          res=>{
-          this.spinner.show();
-          setTimeout(() => {
+         
             this.spinner.hide();
-          }, 1000);
+       
            this.courses= res["message"]
          },
          err=>{

@@ -45,6 +45,13 @@ num;
         alert("Something went wrong in Adding product")
       })
   }
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/login")
+}
 
 
 }

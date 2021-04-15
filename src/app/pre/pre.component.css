@@ -1,7 +1,9 @@
 #cards:hover {
-    background-color: rgb(3, 2, 22);
-    color:white;
+    
+    color:black;
+    height: 400px;
+    align-content: center;
   }
-  .nav-link{
-    text-decoration: none;
-  }
+  
+
+  

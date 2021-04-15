@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-productdetails',
@@ -9,7 +10,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class ProductdetailsComponent implements OnInit {
 
-  constructor(private us:UserService, private router:Router,private spinner: NgxSpinnerService) { }
+  constructor(private us:UserService, private toastr:ToastrService,private router:Router,private spinner: NgxSpinnerService) { }
   courses:any;
   Update:boolean=false;
   products;
@@ -22,16 +23,17 @@ export class ProductdetailsComponent implements OnInit {
  
 
   getdata(){
+    this.spinner.show();
     this.us.getproducts().subscribe(
        res=>{
-        this.spinner.show();
-        setTimeout(() => {
+      
           this.spinner.hide();
-        }, 1000);
+      
          this.courses= res["message"]
          console.log(this.courses)
        },
        err=>{
+        this.spinner.hide();
          alert("Something went wrong in Adding product")
          console.log(err)
        }
@@ -80,20 +82,30 @@ userObj:any;
     this.router.navigateByUrl("/admin")
    }
 
-   delete(obj){
+   delete(obj,i){
     console.log(obj)
+    this.courses.splice(i, 1);
     this.us.deleteBook(obj).subscribe(
       res=>{
             if(res["message"]=="book removed"){
-              alert("book removed")
+              this.toastr.success("book removed")
+             
             }
             if(res["message"]=="book not found")
-            alert("book not found")
+           
+            this.toastr.success("book not found")
       },
       err=>{
-        alert("something went wrong")
+        this.toastr.success("something went wrong")
             console.log(err)
       }
     )
   }
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/pre")
+   }
 }

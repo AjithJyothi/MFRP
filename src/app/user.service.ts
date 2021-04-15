@@ -78,9 +78,18 @@ vieworders(userId: string):Observable<any>{
     return this.hc.get("/admin/onebook/"+bookId)
   }
 
+  getOneUser(userId:string){
+    console.log("service"+userId);
+    return this.hc.get("/user/profile/"+userId)
+  }
+
 
 editBook(obj:object):Observable<any>{
   return this.hc.put("/admin/updatebook",obj)
+ }
+
+ editUser(obj:object):Observable<any>{
+  return this.hc.put("/user/updateprofile",obj)
  }
 
  deleteBook(obj:object):Observable<any>{
@@ -103,6 +112,9 @@ editBook(obj:object):Observable<any>{
 
   userProfile(userId:string):Observable<any>{
       return this.hc.get("/user/profile/"+userId)
+  }
+  deleteCartProduct(obj):Observable<any>{
+    return this.hc.post("/cart/deleteproduct",obj);
   }
 
 }

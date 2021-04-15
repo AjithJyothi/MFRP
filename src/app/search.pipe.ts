@@ -18,7 +18,22 @@ export class SearchPipe implements PipeTransform {
       console.log("else in bookname"+products)
       console.log("the select is ",select)
       console.log("the searchterm is ",searchTerm)
-      if(select=="Bookname"){
+      if(select=="All"){
+        let booktitle=products.filter(obj=>obj.bookname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1);
+        let category= products.filter(obj=>obj.category.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1);
+        let author=products.filter(obj=>obj.author.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1);
+        if(category.length!==0){
+          return category;
+        }
+        else if(booktitle.length!==0){
+          return booktitle;
+        }
+        else{
+          return author;
+        }
+        
+      }
+     else if(select=="Bookname"){
        // let data=products.filter(obj=>obj.bookname==searchTerm )
         let data=products.filter(obj=>obj.bookname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1);
 

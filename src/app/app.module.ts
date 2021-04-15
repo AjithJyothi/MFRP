@@ -23,6 +23,7 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
 import { SearchPipe } from './search.pipe';
 import {NgxSpinnersModule} from 'ngx-spinners';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     WishlistComponent,
     VieworderComponent,
     UpdateproductComponent,
-    SearchPipe
+    SearchPipe,
+    UpdateprofileComponent
   ],
   imports: [
     NgxSpinnersModule,

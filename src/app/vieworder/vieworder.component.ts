@@ -11,19 +11,22 @@ export class VieworderComponent implements OnInit {
   userId:any;
   orders:any=[];
   constructor(private us:UserService,private router:Router,private spinner: NgxSpinnerService) { }
-
+num;
   ngOnInit(): void {
        this.userId=localStorage.getItem("userId") 
-       
+       this.spinner.show();
        this.us.viewOrder(this.userId).subscribe(
         res=>{
-          this.spinner.show();
-       setTimeout(() => {
+          
+       
          this.spinner.hide();
-       }, 2000);
+       
           this.orders= res["message"];
-          console.log(this.orders)
-          console.log("success")
+          let cartnum:[]=this.orders
+      this.us.cartvalue=cartnum.length
+      console.log(cartnum.length)
+      
+      this.num=cartnum.length
         },
         err=>{
           alert("Something went wrong")
@@ -33,6 +36,13 @@ export class VieworderComponent implements OnInit {
 
 
   }
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/login")
+}
 
   back(){
     this.router.navigateByUrl("/home")

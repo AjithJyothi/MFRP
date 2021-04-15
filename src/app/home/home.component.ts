@@ -207,22 +207,27 @@ myOrders(){
 
 
    
-  findcat(obj) {
-    this.bss = false
-    let cat = obj.ct
-    console.log(cat);
-    this.us.getbook(cat).subscribe(
-      res => {
-        this.catcourses = res["message"];
-        console.log(this.catcourses)
-        console.log("success")
-      },
-      err => {
-        alert("Something went wrong")
-        console.log(err.message)
-      }
-    )
-  }
+   findcat(obj){
+    this.select="Category";
+    this.searchTerm=obj.ct;
+    console.log("select : "+this.select);
+    console.log("search term : "+this.searchTerm)
+   /* this.bss=false
+    let cat=obj.ct
+         console.log(cat);
+         this.us.getbook(cat).subscribe(
+          res=>{
+            this.catcourses= res["message"];
+            console.log(this.catcourses)
+            console.log("success")
+          },
+          err=>{
+            alert("Something went wrong")
+            console.log(err.message)
+          }
+         )*/
+   }
+
 
   onSubmit(formRef){
     console.log(formRef);

@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
-
+import {Router} from '@angular/router';
 @Component({
   templateUrl: './profile.component.html'
 })
@@ -12,7 +12,7 @@ export class ProfileComponent {
   lastname:any;
   emailid:any;
 user:any;
-  constructor(private us: UserService) {}
+  constructor(private us: UserService, private router: Router) {}
   
   
     ngOnInit(): void {
@@ -20,7 +20,7 @@ user:any;
        this.us.userProfile(this.userId).subscribe(
          res=>{
              this.user=res["message"];
-             console.log("final "+this.user)
+            
          },
          err=>{
            console.log(err);
@@ -29,6 +29,14 @@ user:any;
       
    
   }
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/login")
+}
+
 }
 
 

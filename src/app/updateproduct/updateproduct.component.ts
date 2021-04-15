@@ -27,12 +27,7 @@ export class UpdateproductComponent implements OnInit {
     )
   }
 
-  file:File;
-  incomingfile(event)
-   {
-   this.file= event.target.files[0];
-   }
-   formData=new FormData();
+  
 
   onSubmit(formRef){
     formRef.bookId=this.bookId;
