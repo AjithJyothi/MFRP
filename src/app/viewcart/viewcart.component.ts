@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
-import { NgxSpinnerService } from "ngx-spinner"
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-viewcart',
   templateUrl: './viewcart.component.html',
@@ -13,7 +14,7 @@ export class ViewcartComponent implements OnInit {
   total:any=0;
   num;
 
-  constructor(private us:UserService, private router:Router,private spinner: NgxSpinnerService) { }
+  constructor(private us:UserService, private router:Router,private spinner: NgxSpinnerService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     
@@ -52,6 +53,7 @@ export class ViewcartComponent implements OnInit {
     this.products.splice(i, 1);
     this.us.deleteproduct(this.products[i].productname).subscribe(
       res=>{
+        this.toastr.error('product removed"');
            
         if(res["message"]=="Product details deleted")
         {

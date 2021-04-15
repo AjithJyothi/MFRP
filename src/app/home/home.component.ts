@@ -128,7 +128,8 @@ constructor(private us:UserService,private spinner: NgxSpinnerService, private r
       
      },
      err=>{
-       alert("Something went wrong")
+      this.toastr.error('Something went wrong')
+       //alert("Something went wrong")
        console.log(err)
      }
    )
@@ -157,7 +158,8 @@ getproduct(){
       this.num=cartnum.length
     },
     err=>{
-      alert("Something went wrong in Adding product")
+      this.toastr.error('Something went wrong')
+      //alert("Something went wrong in Adding product")
     })
 }
 
@@ -199,7 +201,8 @@ myOrders(){
        
        },
        err=>{
-         alert("Something went wrong in Adding product")
+        this.toastr.error('Something went wrong')
+         //alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
@@ -292,11 +295,14 @@ myOrders(){
     this.us.tocart(userObj).subscribe(
       res=>{
             if(res["message"]=="user existed"){
-                alert("user name is already taken... choose different user name")
+              this.toastr.success('user name is already taken... choose different user name')
+                //alert("user name is already taken... choose different user name")
                 formRef.clear();
             }
             if(res["message"]=="user created"){
-              alert("Registration success")
+              this.toastr.success('Registration success')
+              
+              //alert("Registration success")
 
               //navigate to login component
               this.router.navigateByUrl("/login")

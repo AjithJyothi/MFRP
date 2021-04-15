@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-pre',
@@ -17,7 +18,7 @@ export class PreComponent implements OnInit {
   bss:any=true;
   catcourses:any=[];
   categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
-  constructor(private us:UserService,private spinner: NgxSpinnerService, private router:Router) { }
+  constructor(private us:UserService,private spinner: NgxSpinnerService, private router:Router,private toastr: ToastrService) { }
   
     ngOnInit(): void {
       this.getdata()
@@ -42,6 +43,7 @@ export class PreComponent implements OnInit {
            this.courses= res["message"]
          },
          err=>{
+           
            alert("Something went wrong in Adding course")
            console.log(err)
          }
@@ -98,11 +100,13 @@ export class PreComponent implements OnInit {
       this.us.tocart(userObj).subscribe(
         res=>{
               if(res["message"]=="user existed"){
-                  alert("user name is already taken... choose different user name")
+                this.toastr.error('user name is already taken... choose different user name');
+                  //alert("user name is already taken... choose different user name")
                   formRef.clear();
               }
               if(res["message"]=="user created"){
-                alert("Registration success")
+                this.toastr.success('Registration success')
+                //alert("Registration success")
   
                 //navigate to login component
                 this.router.navigateByUrl("/login")
@@ -110,7 +114,8 @@ export class PreComponent implements OnInit {
   
         },
         err=>{
-          alert("Something went wrong in user creation")
+          this.toastr.error('Something went wrong in user creation');
+          //alert("Something went wrong in user creation")
           console.log(err)
         }
       )

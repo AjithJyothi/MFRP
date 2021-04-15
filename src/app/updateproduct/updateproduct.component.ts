@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-updateproduct',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UpdateproductComponent implements OnInit {
 
-  constructor(private us:UserService, private route:ActivatedRoute, private router:Router) { }
+  constructor(private us:UserService, private route:ActivatedRoute, private router:Router ,private toastr: ToastrService) { }
     bookId:any;
     book:any=[];
   ngOnInit(): void {
@@ -34,8 +35,9 @@ export class UpdateproductComponent implements OnInit {
     console.log(formRef)
       this.us.editBook(formRef).subscribe(
         res=>{
+          this.toastr.success('book updated');  
                if(res["message"]=="book updated"){
-                 alert("book updated")
+                 //alert("book updated")
                  this.router.navigateByUrl("/productdetails")
                }
                if(res["message"]=="book not found"){

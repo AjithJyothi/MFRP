@@ -34,7 +34,9 @@ export class ProductdetailsComponent implements OnInit {
        },
        err=>{
         this.spinner.hide();
-         alert("Something went wrong in Adding product")
+        this.toastr.error('Something went wrong in adding product');
+
+         //alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
@@ -50,12 +52,15 @@ userObj:any;
     
         this.us.addproduct(this.userObj).subscribe(
           res=>{
+            this.toastr.success('Product Added Successfully');
                
                 if(res["message"]=="product Added"){
-                  alert("Product Added Successfuly")
+                  //alert("Product Added Successfuly")
                 }
           },
           err=>{
+            this.toastr.error('Something went wrong in Adding Product');
+            
             alert("Something went wrong in Adding Product")
             console.log(err)
           }
@@ -66,11 +71,6 @@ userObj:any;
    
    EditItem(a1,a2,a3,a4,a5,i){
     console.log(this.userObj)  
-      /*this.courses[i].productname=a1;
-      this.courses[i].productRam=a2;
-      this.courses[i].productMemory=a3;
-      this.courses[i].productscreensize=a4;
-      this.courses[i].productprice=a5;*/
     this.Update = !this.Update;
    }
 

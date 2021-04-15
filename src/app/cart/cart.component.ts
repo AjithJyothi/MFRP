@@ -84,7 +84,8 @@ getproduct(){
       }
     },
     err=>{
-      alert("Something went wrong in Adding product")
+      this.toastr.error("Something went wrong in Adding product")
+      //alert("Something went wrong in Adding product")
     })
     
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-updateprofile',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UpdateprofileComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private us:UserService, private router:Router) { }
+  constructor(private route:ActivatedRoute, private us:UserService, private router:Router,private toastr: ToastrService) { }
   userId:any;
   user:any;
   ngOnInit(): void {
@@ -33,8 +34,9 @@ export class UpdateprofileComponent implements OnInit {
     console.log("onsubmit"+obj);
     this.us.editUser(obj).subscribe(
       res=>{
+        this.toastr.success( 'profile updated');  
              if(res["message"]=="Profile updated"){
-               alert("Profile updated")
+               //alert("Profile updated")
                this.router.navigateByUrl("/profile")
              }
              if(res["message"]=="User Profile not found"){

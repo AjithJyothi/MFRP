@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private us:UserService, private router:Router) { }
+  constructor(private us:UserService, private router:Router,private toastr: ToastrService) { }
     
   ngOnInit(): void {
   }
@@ -32,9 +32,9 @@ export class AdminComponent implements OnInit {
     console.log(this.formData);
         this.us.addproduct(this.formData).subscribe(
           res=>{
-               
+            this.toastr.success('Product Added Successfuly');
                 if(res["message"]=="product Added"){
-                  alert("Product Added Successfuly")
+                  //alert("Product Added Successfuly")
                 }
           },
           err=>{
