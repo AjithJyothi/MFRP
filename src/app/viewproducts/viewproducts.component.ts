@@ -67,33 +67,76 @@ bookId:any
      )
       }
    }
-
-   onSubmit(formRef:any){
-    this.router.navigateByUrl("/cart")
-     if(this.userId==null){
-      this.router.navigateByUrl("/login")
-      }
-        else{
+   onSubmit(formRef){
+    console.log(formRef);
+     // this.router.navigateByUrl("/cart")
+      if(this.userId==null){
+       this.router.navigateByUrl("/login")
+       }
+         else{
+          
+           let userObj=formRef
+           let obj={
+          
+             bookname:userObj.booktitle,
+             author:userObj.author,
+             userId:this.userId,
+             price:userObj.price,
+             publisher:userObj.publisher,
+             publishdate:userObj.publishdate,
+             rating:userObj.rating,
+            
+             
+             image:userObj.image,
+             quantity:1,
+             }
+     
+           console.log(obj)
+       
+               this.us.tocart(obj).subscribe(
+                 res=>{
+                      
+                       if(res["message"]=="product Added"){
+                       this.toastr.success('Book added to cart') 
+ 
+ 
+                       }
+                 },
+                 err=>{
+                   alert("Something went wrong in Adding Product")
+                   console.log(err)
+                 }
+               )
+         }
          
-          let userObj=formRef.value
-    
-          console.log(userObj)
-      
-              this.us.tocart(userObj).subscribe(
-                res=>{
-                     
-                      if(res["message"]=="product Added"){
-                      this.toastr.success('book added to cart') 
-
-
-                      }
-                },
-                err=>{
-                  alert("Something went wrong in Adding Product")
-                  console.log(err)
-                }
-              )
-        }
-        
+   }
   }
-}
+
+//    onSubmit(product:any){
+//     console.log(product)
+//      if(this.userId==null){
+//       this.router.navigateByUrl("/login")
+//       }
+//         else{
+//            product.userId=this.userId;
+//           let userObj=product;
+    
+//           console.log(userObj)
+      
+//               this.us.tocart(userObj).subscribe(
+//                 res=>{
+                     
+//                       if(res["message"]=="product Added"){
+//                       this.toastr.success('book added to cart') 
+//                       }
+//                       this.router.navigateByUrl("/cart")
+//                 },
+//                 err=>{
+//                   alert("Something went wrong in Adding Product")
+//                   console.log(err)
+//                 }
+//               )
+//         }
+        
+//   }
+// }
