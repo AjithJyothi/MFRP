@@ -143,12 +143,10 @@ constructor(private us:UserService,private spinner: NgxSpinnerService, private r
   this.router.navigateByUrl("/wishlist")
  }
 getproduct(){
+  this.spinner.show();
   this.us.getproduct(this.userId).subscribe(
     res=>{
-      this.spinner.show();
-            setTimeout(() => {
-              this.spinner.hide();
-            }, 1000);
+      this.spinner.hide();
         
       this.products= res["message"]
      

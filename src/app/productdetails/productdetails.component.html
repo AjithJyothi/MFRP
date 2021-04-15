@@ -1,7 +1,7 @@
-<div class="container-fluid">
-  <a class="btn btn-success float-end m-2" routerLink="/home">back</a>
-  <button class="btn btn-success float-end m-2" (click)="goto()">Add Products</button>
-  <a class="btn btn-success float-end m-2" style="text-decoration: none;" (click)="Logout()">Log Out</a>
+<div class="container-fluid bg-primary" >
+  <a class="btn float-end m-2" routerLink="/home">back</a>
+  <button class=" btn float-end m-2" (click)="goto()">Add Products</button>
+  <a class="btn float-end m-2" style="text-decoration: none;" (click)="Logout()">Log Out</a>
 </div>
 <!--
 <div class="container">
@@ -44,7 +44,7 @@
     </div>
     -->
 
-    <div class="container">
+    <div class="container bg-primary" style="color: black;">
       <div class="row">
         <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let obj of courses; let i= index" >
           <div class="card mb-3"  style="max-width: 540px;">
