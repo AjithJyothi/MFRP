@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-updateproduct',
@@ -10,17 +11,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UpdateproductComponent implements OnInit {
 
-  constructor(private us:UserService, private route:ActivatedRoute, private router:Router ,private toastr: ToastrService) { }
+  constructor(private us:UserService, private route:ActivatedRoute, private router:Router ,private toastr: ToastrService,private spinner: NgxSpinnerService) { }
     bookId:any;
     book:any=[];
   ngOnInit(): void {
   //  this.username=localStorage.getItem("username")
      this.bookId=this.route.snapshot.params['bookId'];
      console.log("update.ts "+this.bookId)
+     this.spinner.show();
      this.us.getOneBook(this.bookId).subscribe(
       res=>{
             this.book=res["message"]
             console.log(this.book)
+            this.spinner.hide();
       },
       err=>{
         console.log(err)
@@ -55,6 +58,13 @@ export class UpdateproductComponent implements OnInit {
     this.router.navigateByUrl("/productdetails")
   }
 
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/pre")
+}
 
 
 }

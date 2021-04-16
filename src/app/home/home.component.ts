@@ -167,7 +167,7 @@ Logout(){
     
     localStorage.clear();
   
-  this.router.navigateByUrl("/login")
+  this.router.navigateByUrl("/pre")
 }
 
 viewcart(){
@@ -192,11 +192,9 @@ myOrders(){
     this.us.getproducts().subscribe(
        res=>{
         this.spinner.show();
-        setTimeout(() => {
-          this.spinner.hide();
-        }, 1000);
+        
          this.courses= res["message"]
-       
+         this.spinner.hide();
        },
        err=>{
         this.toastr.error('Something went wrong')
@@ -213,20 +211,7 @@ myOrders(){
     this.searchTerm=obj.ct;
     console.log("select : "+this.select);
     console.log("search term : "+this.searchTerm)
-   /* this.bss=false
-    let cat=obj.ct
-         console.log(cat);
-         this.us.getbook(cat).subscribe(
-          res=>{
-            this.catcourses= res["message"];
-            console.log(this.catcourses)
-            console.log("success")
-          },
-          err=>{
-            alert("Something went wrong")
-            console.log(err.message)
-          }
-         )*/
+   
    }
 
 
@@ -241,7 +226,7 @@ myOrders(){
            let userObj=formRef
            let obj={
              username:this.username,
-             bookname:userObj.booktitle,
+             bookname:userObj.bookname,
              author:userObj.author,
              userId:this.userId,
              price:userObj.price,

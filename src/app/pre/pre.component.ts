@@ -23,6 +23,7 @@ export class PreComponent implements OnInit {
     ngOnInit(): void {
       this.getdata()
       this.username=localStorage.getItem("username")
+      this.spinner.show();
       if(this.username!=null){this.router.navigateByUrl("/home")}
      
     }
@@ -34,13 +35,11 @@ export class PreComponent implements OnInit {
   viewcart(){
     this.router.navigateByUrl("/login")
   }
-    getdata(){ this.spinner.show();
+    getdata(){ 
       this.us.getproducts().subscribe(
          res=>{
-         
-            this.spinner.hide();
-       
            this.courses= res["message"]
+           this.spinner.hide();
          },
          err=>{
            
@@ -78,20 +77,7 @@ export class PreComponent implements OnInit {
       this.searchTerm=obj.ct;
       console.log("select : "+this.select);
       console.log("search term : "+this.searchTerm)
-     /* this.bss=false
-      let cat=obj.ct
-           console.log(cat);
-           this.us.getbook(cat).subscribe(
-            res=>{
-              this.catcourses= res["message"];
-              console.log(this.catcourses)
-              console.log("success")
-            },
-            err=>{
-              alert("Something went wrong")
-              console.log(err.message)
-            }
-           )*/
+     
      }
   
   

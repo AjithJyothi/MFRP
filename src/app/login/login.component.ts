@@ -26,10 +26,7 @@ export class LoginComponent implements OnInit {
     //if user
    if(userCredObj.email=="admin@gmail.com" && userCredObj.password=="admin")
    {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000);
+  
     this.toastr.success('admin login', 'login success');    
     this.router.navigateByUrl("/productdetails")    
 

@@ -16,7 +16,9 @@ export class ProductdetailsComponent implements OnInit {
   products;
  fullstack=[]
   ngOnInit(): void {
+    this.spinner.show();
     this.getdata()
+
     
   }
 
@@ -27,9 +29,9 @@ export class ProductdetailsComponent implements OnInit {
     this.us.getproducts().subscribe(
        res=>{
       
-          this.spinner.hide();
       
          this.courses= res["message"]
+         this.spinner.hide();
          console.log(this.courses)
        },
        err=>{

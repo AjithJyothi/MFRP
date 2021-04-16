@@ -40,9 +40,7 @@ export class RegisterComponent implements OnInit {
                     formRef.clear();
                 }
                 if(res["message"]=="user created"){
-                 // alert("Registration success. " +" userId is " + this.userId +".  Use this userId for login")
-                  //navigate to login component
-                 // this.router.navigateByUrl("/login")
+                 
                  this.displayId=this.userId
                 }
 

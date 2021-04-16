@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { NgxSpinnerService } from "ngx-spinner";
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-vieworder',
   templateUrl: './vieworder.component.html',
@@ -19,9 +19,10 @@ num;
         res=>{
           
        
-         this.spinner.hide();
+         
        
           this.orders= res["message"];
+          this.spinner.hide();
           let cartnum:[]=this.orders
       this.us.cartvalue=cartnum.length
       console.log(cartnum.length)

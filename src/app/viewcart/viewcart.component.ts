@@ -20,6 +20,7 @@ export class ViewcartComponent implements OnInit {
     
    
     this.userId=localStorage.getItem("userId")
+    this.spinner.show();
     this.getproduct();
     
   }
@@ -27,10 +28,8 @@ export class ViewcartComponent implements OnInit {
   getproduct(){
     this.us.getproduct(this.userId).subscribe(
       res=>{
-        this.spinner.show();
-        setTimeout(() => {
-          this.spinner.hide();
-        }, 2000);
+
+      
            console.log("hello worldd")
         this.products= res.message
         console.log(this.products)
@@ -38,6 +37,7 @@ export class ViewcartComponent implements OnInit {
         this.us.cartvalue=cartnum.length
         console.log(cartnum.length)
         this.num=cartnum.length
+        this.spinner.hide();
       },
       err=>{
         alert("Something went wrong in Adding product")

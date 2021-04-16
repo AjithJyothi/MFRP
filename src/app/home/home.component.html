@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <img src="https://i.postimg.cc/652svFLG/books-1.png"   alt="" width="45px" height="45px">
     <a class="navbar-brand active" routerLink="pre"> Book Store</a>
@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" style="color: black;" data-bs-toogle="collapse" data-bs-target="#navbarSupportedContent" routerLink="/home">Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
+          <a class="nav-link active" aria-current="page" style="color: black; text-decoration: none;" data-bs-toogle="collapse" data-bs-target="#navbarSupportedContent" routerLink="/home">Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="Logout()" style="color: black;" data-bs-toogle="collapse" data-bs-target=".navbar-collapse.show" routerLink="/login">LogOut  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
+          <a class="nav-link" (click)="Logout()" style="color: black; text-decoration: none;" data-bs-toogle="collapse" data-bs-target=".navbar-collapse.show" routerLink="/login">LogOut  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
         </li>
       </ul>
       <ul class="d-flex float-end">
@@ -106,6 +106,7 @@
       <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of courses | search : searchTerm: select; let i=index" >
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters" id="cards">
+            <button class="btn float-end d-grid d-md-flex ms-2" (click)="wishlist(get)" style="color: coral;"><span class="glyphicon glyphicon-heart " id="wishlist"></span></button> 
             <div class="col-md-4">
               <img [src]="get.image" width="100%" class="card-img" alt="..."  style="padding-left: 15px;  padding-top: 40px;">
             </div>

@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CartComponent implements OnInit {
   products:any;
   userId:any;
+  username:any;
   total=0;
   num;
   inp;
@@ -19,6 +20,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId=localStorage.getItem("userId")
+    this.spinner.show();
     if(this.userId==null){this.router.navigateByUrl("/login")}
     this.getproduct();
     
@@ -69,7 +71,9 @@ decr(i){
 getproduct(){
   this.us.getproduct(this.userId).subscribe(
     res=>{
-         console.log("hello world")
+      //this.spinner.show();
+      
+    console.log("hello world")
       this.products= res.message
       console.log(this.products)
       let cartnum:[]=this.products
@@ -82,6 +86,7 @@ getproduct(){
        this.total+=this.products[i].price
        console.log(this.total)
       }
+      this.spinner.hide();
     },
     err=>{
       this.toastr.error("Something went wrong in Adding product")
@@ -122,6 +127,40 @@ delete(obj)
       console.log(err);
     }
   )
+}
+
+gotoProfile(){
+  this.router.navigateByUrl("/profile")
+}
+gotoWishlist(){
+ this.router.navigateByUrl("/wishlist")
+}
+
+
+Logout(){
+ 
+   
+   localStorage.clear();
+ 
+ this.router.navigateByUrl("/pre")
+}
+
+viewcart(){
+ if(this.userId!=null)
+{ this.router.navigateByUrl("/cart")}
+else
+{
+  this.router.navigateByUrl("/login")
+}
+}
+
+myOrders(){
+ if(this.userId!=null)
+{ this.router.navigateByUrl("/vieworder")}
+else
+{
+  this.router.navigateByUrl("/login")
+}
 }
 
 

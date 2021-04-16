@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -44,5 +45,11 @@ export class AdminComponent implements OnInit {
         )
         this.router.navigateByUrl("/productdetails")
   }
-
+  Logout(){
+  
+    
+    localStorage.clear();
+  
+  this.router.navigateByUrl("/pre")
+}
 }

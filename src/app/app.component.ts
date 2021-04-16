@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
 products:any;
 searchTerm:string;
   select:string;
- constructor(private router:Router, private us:UserService){}
+ constructor(private router:Router, private us:UserService,private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {  
     this.username=localStorage.getItem("username")
@@ -27,8 +28,10 @@ searchTerm:string;
 
     this.us.getproducts().subscribe(
       res=>{
-          
+        
+this.spinner.show();       
         this.products= res["message"]
+        this.spinner.hide();
       
       },
       err=>{

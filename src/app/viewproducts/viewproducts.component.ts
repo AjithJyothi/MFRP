@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
   selector: 'app-viewproducts',
   templateUrl: './viewproducts.component.html',
@@ -9,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ViewproductsComponent implements OnInit {
 
-  constructor(private us:UserService, private router:Router,private toastr: ToastrService, private route:ActivatedRoute) { }
+  constructor(private us:UserService, private router:Router,private toastr: ToastrService, private route:ActivatedRoute,private spinner: NgxSpinnerService) { }
   courses:any;
   product:any=[];
 userId:any;
@@ -17,11 +19,13 @@ bookId:any
   ngOnInit(): void {
     this.userId=localStorage.getItem("userId")
     this.bookId=this.route.snapshot.params['bookId'];
+    this.spinner.show();
      console.log("update.ts "+this.bookId)
      this.us.getOneBook(this.bookId).subscribe(
       res=>{
         console.log(res["message"])
             this.product=res["message"]
+            this.spinner.hide();
             console.log("viewproduct ts "+this.product)
       },
       err=>{
@@ -36,7 +40,8 @@ bookId:any
          this.courses= res["message"]
        },
        err=>{
-         alert("Something went wrong in Adding product")
+        this.toastr.error('Something went wrong in Adding product');
+         //alert("Something went wrong in Adding product")
          console.log(err)
        }
      )
@@ -57,16 +62,27 @@ bookId:any
      console.log(product)
      this.us.myOrder(product).subscribe(
        res=>{
+        this.toastr.error('Something went wrong');
          console.log(res["message"])
-         alert(res["message"])
+        
        },
        err=>{
-         alert("Something went wrong")
+         this.toastr.error('Something went wrong');
+         //alert("Something went wrong")
          console.log(err)
        }
      )
       }
    }
+   
+Logout(){
+  
+    
+  localStorage.clear();
+
+this.router.navigateByUrl("/pre")
+}
+
    onSubmit(formRef){
     console.log(formRef);
      // this.router.navigateByUrl("/cart")
@@ -111,32 +127,3 @@ bookId:any
          
    }
   }
-
-//    onSubmit(product:any){
-//     console.log(product)
-//      if(this.userId==null){
-//       this.router.navigateByUrl("/login")
-//       }
-//         else{
-//            product.userId=this.userId;
-//           let userObj=product;
-    
-//           console.log(userObj)
-      
-//               this.us.tocart(userObj).subscribe(
-//                 res=>{
-                     
-//                       if(res["message"]=="product Added"){
-//                       this.toastr.success('book added to cart') 
-//                       }
-//                       this.router.navigateByUrl("/cart")
-//                 },
-//                 err=>{
-//                   alert("Something went wrong in Adding Product")
-//                   console.log(err)
-//                 }
-//               )
-//         }
-        
-//   }
-// }
