@@ -106,9 +106,9 @@ goback(){
   this.router.navigateByUrl("/home")
   
 }
-delete(obj)
+delete(obj,i)
 {
-  
+  this.products.splice(i, 1);
   this.us.deleteCartProduct(obj).subscribe(
     res=>{
       if(res.message){

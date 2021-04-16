@@ -44,5 +44,8 @@ export class AdminComponent implements OnInit {
         )
         this.router.navigateByUrl("/productdetails")
   }
+  cancel(){
+    this.router.navigateByUrl("/productdetails")
+  }
 
 }
