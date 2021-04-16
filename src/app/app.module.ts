@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { SearchPipe } from './search.pipe';
 import {NgxSpinnersModule} from 'ngx-spinners';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
@@ -52,9 +52,9 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      timeOut:2000,
-      positionClass:'toast-top-center',
-      closeButton:true
+      timeOut: 2000,
+      positionClass: 'toast-top-center',
+      closeButton: true
     }),
     BrowserAnimationsModule,
   ],

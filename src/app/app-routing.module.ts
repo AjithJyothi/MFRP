@@ -17,27 +17,27 @@ import { ViewproductsComponent } from './viewproducts/viewproducts.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
-  {path:"app",component:AppComponent},
-  {path:"admin",component:AdminComponent},
-  {path:"profile",component:ProfileComponent},
-  {path:"wishlist",component:WishlistComponent},
-  {path:"productdetails",component:ProductdetailsComponent},
-  {path:"pre",component:PreComponent},
-  {path:"home",component:HomeComponent},
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:"cart",component:CartComponent},
-  {path:"viewcart",component:ViewcartComponent},
-  {path:"viewproducts/:bookId",component:ViewproductsComponent},
-  {path:"updateproduct/:bookId",component:UpdateproductComponent},
-  {path:"updateprofile/:userId",component:UpdateprofileComponent},
-  {path:"vieworder",component:VieworderComponent},
-   {path:"",redirectTo:"/pre",pathMatch:"full"}
-  
+  {path: 'app', component: AppComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'wishlist', component: WishlistComponent},
+  {path: 'productdetails', component: ProductdetailsComponent},
+  {path: 'pre', component: PreComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'viewcart', component: ViewcartComponent},
+  {path: 'viewproducts/:bookId', component: ViewproductsComponent},
+  {path: 'updateproduct/:bookId', component: UpdateproductComponent},
+  {path: 'updateprofile/:userId', component: UpdateprofileComponent},
+  {path: 'vieworder', component: VieworderComponent},
+   {path: '', redirectTo: '/pre', pathMatch: 'full'}
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

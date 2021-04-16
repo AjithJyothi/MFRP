@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
@@ -10,102 +10,105 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class ProductdetailsComponent implements OnInit {
 
-  constructor(private us:UserService, private toastr:ToastrService,private router:Router,private spinner: NgxSpinnerService) { }
-  courses:any;
-  Update:boolean=false;
+  constructor(private us: UserService, private toastr: ToastrService, private router: Router, private spinner: NgxSpinnerService) { }
+  courses: any;
+  Update = false;
   products;
- fullstack=[]
+ fullstack = [];
+
+userObj: any;
   ngOnInit(): void {
-    this.getdata()
-    
+    this.spinner.show();
+    this.getdata();
+
+
   }
 
- 
 
-  getdata(){
+
+  getdata(): any{
     this.spinner.show();
     this.us.getproducts().subscribe(
-       res=>{
-      
-          this.spinner.hide();
-      
-         this.courses= res["message"]
-         console.log(this.courses)
+       res => {
+
+
+         this.courses = res.message;
+         this.spinner.hide();
+         console.log(this.courses);
        },
-       err=>{
+       err => {
         this.spinner.hide();
-         alert("Something went wrong in Adding product")
-         console.log(err)
+        this.toastr.error('Something went wrong in adding product');
+
+         // alert("Something went wrong in Adding product")
+        console.log(err);
        }
-     )
+     );
    }
 
-   arrayset(){
-     
-   }
+   arrayset(): any{
 
-userObj:any;
-   onSubmit(formRef:any){
-     this.userObj=formRef.value
-    
-        this.us.addproduct(this.userObj).subscribe(
-          res=>{
-               
-                if(res["message"]=="product Added"){
-                  alert("Product Added Successfuly")
+   }
+   onSubmit(formRef: any): any{
+     this.userObj = formRef.value;
+
+     this.us.addproduct(this.userObj).subscribe(
+          res => {
+            this.toastr.success('Product Added Successfully');
+
+            if (res.message === 'product Added'){
+                  // alert("Product Added Successfuly")
                 }
           },
-          err=>{
-            alert("Something went wrong in Adding Product")
-            console.log(err)
+          err => {
+            this.toastr.error('Something went wrong in Adding Product');
+
+            alert('Something went wrong in Adding Product');
+            console.log(err);
           }
-        )
-        this.router.navigateByUrl("/viewproducts")
+        );
+     this.router.navigateByUrl('/viewproducts');
   }
 
-   
-   EditItem(a1,a2,a3,a4,a5,i){
-    console.log(this.userObj)  
-      /*this.courses[i].productname=a1;
-      this.courses[i].productRam=a2;
-      this.courses[i].productMemory=a3;
-      this.courses[i].productscreensize=a4;
-      this.courses[i].productprice=a5;*/
+
+   EditItem(a1, a2, a3, a4, a5, i): any{
+    console.log(this.userObj);
     this.Update = !this.Update;
    }
 
-   DeleteItem(i){
+   DeleteItem(i): any{
     this.courses.splice(i, 1);
    }
 
-   goto(){
-    this.router.navigateByUrl("/admin")
+   goto(): any{
+    this.router.navigateByUrl('/admin');
    }
 
-   delete(obj,i){
-    console.log(obj)
+   delete(obj, i): any{
+    console.log(obj);
     this.courses.splice(i, 1);
     this.us.deleteBook(obj).subscribe(
-      res=>{
-            if(res["message"]=="book removed"){
-              this.toastr.success("book removed")
-             
+      res => {
+            if (res.message === 'book removed'){
+              this.toastr.success('book removed');
+
             }
-            if(res["message"]=="book not found")
-           
-            this.toastr.success("book not found")
+            if (res.message === 'book not found') {
+
+            this.toastr.success('book not found');
+            }
       },
-      err=>{
-        this.toastr.success("something went wrong")
-            console.log(err)
+      err => {
+        this.toastr.success('something went wrong');
+        console.log(err);
       }
-    )
+    );
   }
-  Logout(){
-  
-    
+  Logout(): any{
+
+
     localStorage.clear();
-  
-  this.router.navigateByUrl("/pre")
+
+    this.router.navigateByUrl('/pre');
    }
 }

@@ -6,17 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RouteGuard implements CanActivate {
-  canActivate():boolean{
+  canActivate(): boolean{
 
-    //check token in local storage
-    let token=localStorage.getItem("token")
-    //if token is not found, return true
-    if(token==undefined){
-      alert("Unauthorized access")
+    // check token in local storage
+    const token = localStorage.getItem('token');
+    // if token is not found, return true
+    if (token === undefined){
+      alert('Unauthorized access');
       return false;
     }
-    //else return true
+    // else return true
     return true;
   }
-  
+
 }

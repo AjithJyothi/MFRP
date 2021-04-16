@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <img src="https://i.postimg.cc/652svFLG/books-1.png"   alt="" width="45px" height="45px">
     <a class="navbar-brand active" routerLink="pre"> Book Store</a>
@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" style="text-decoration: none;" routerLink="/login">Login <img src="https://i.postimg.cc/8PYVjN2v/login-1.png"   alt="" height="18px" width="18px"></a>
+          <a class="nav-link active" style="text-decoration: none;" aria-current="page" routerLink="/login">Login <img src="https://i.postimg.cc/8PYVjN2v/login-1.png"   alt="" height="18px" width="18px"></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" style="text-decoration: none;" routerLink="/register">Register  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
+        <li class="nav-item" >
+          <a class="nav-link active"  style="text-decoration: none;" routerLink="/register">Register  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
         </li>
       </ul>
       <ul class="d-flex float-end">
@@ -34,14 +34,14 @@
 <router-outlet></router-outlet>
 
 <!--Pre-->
-<div class="container mt-6 bg-primary " style="border-style: solid; border-color: white;"  >
+<div class="container mt-6 bg-primary "  >
   <nav class="navbar" >
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav " *ngFor="let obj of categories;">    
-      <li class="nav-item" style="display: inline-block;"  style="padding:0;margin-left:50px;"><a role="button" (click)="findcat(obj)">{{obj.ct}}   |</a></li>
+      <li class="nav-item " style="display: inline-block;"  style="padding:0;margin-left:50px;"><a role="button" (click)="findcat(obj)"><b>{{obj.ct}}   </b></a></li>
       </ul>
   
 </div>
@@ -130,15 +130,7 @@
                 
                 <p class="card-text"><b>Rs.{{get.price}}</b></p>
                 <button type="button" class="close btn-danget float-end" data-dismiss="modal">&times;</button>
-                       
-                        <!--  <h1>Prod details</h1>
-                        <button type="button" class="close float-end" data-dismiss="modal">&times;</button>
--->
-                      </div>
-                     <!-- <div class="modal-footer">
-                        <button  class="btn btn-default"(click)="ifOk()" data-dismiss="modal">Ok</button>
-                      </div>-->
-                    </div>
+                      
                     
                   </div>
                 </div>

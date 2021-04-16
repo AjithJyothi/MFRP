@@ -2,311 +2,300 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-courses:any;
-userId:any;
-username:any;
-products:any=[];
-toview:any;
+courses: any;
+userId: any;
+username: any;
+products: any = [];
+toview: any;
 num;
 view;
-name:string;
-searchTerm:string;
-select:string
-one;two;three;four;five;six;
-category=["FullStack","NodeJS","angular","JS","HtmlCssAndRwd","MongoDB"]
-bss:any=true;
-  catcourses:any=[];
-  categories:any=[{ct:"fullstack"},{ct:"angular"},{ct:"NodeJS"},{ct:"JS"},{ct:"HtmlCssAndRwd"},{ct:"MongoDB"}]
-constructor(private us:UserService,private spinner: NgxSpinnerService, private router:Router, private toastr: ToastrService) { }
+name: string;
+searchTerm: string;
+select: string;
+one; two; three; four; five; six;
+category = ['FullStack', 'NodeJS', 'angular', 'JS', 'HtmlCssAndRwd', 'MongoDB'];
+bss: any = true;
+  catcourses: any = [];
+  categories: any = [{ct: 'fullstack'}, {ct: 'angular'}, {ct: 'NodeJS'}, {ct: 'JS'}, {ct: 'HtmlCssAndRwd'}, {ct: 'MongoDB'}];
+constructor(private us: UserService, private spinner: NgxSpinnerService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-   
-    this.userId=localStorage.getItem("userId")
-    this.username=localStorage.getItem("username")
-      if(this.userId==null){this.router.navigateByUrl("/pre")}
-    this.getdata()
-    this.getproduct()
+
+    this.userId = localStorage.getItem('userId');
+    this.username = localStorage.getItem('username');
+    if (this.userId == null){this.router.navigateByUrl('/pre'); }
+    this.getdata();
+    this.getproduct();
   // this. sorting()
-   
 
-    this.name=this.us.getmyname();
-  
+
+    this.name = this.us.getmyname();
+
   }
 
-  sorting(){
-    //FullStack
+  sorting(): any{
+    // FullStack
       this.us.getbook(this.category[0]).subscribe(
-        res=>{
-            
-          this.one= res["message"]
-          console.log(this.products)
-          
+        res => {
+
+          this.one = res.message;
+          console.log(this.products);
+
         },
-        err=>{
-          alert("Something went wrong in Adding product")
-        })
-        //NodeJs
-        this.us.getbook(this.category[1]).subscribe(
-          res=>{
-              
-            this.two= res["message"]
-            console.log(this.products)
-            
+        err => {
+          alert('Something went wrong in Adding product');
+        });
+        // NodeJs
+      this.us.getbook(this.category[1]).subscribe(
+          res => {
+
+            this.two = res.message;
+            console.log(this.products);
+
           },
-          err=>{
-            alert("Something went wrong in Adding product")
-          })
-          //angular
-          this.us.getbook(this.category[2]).subscribe(
-            res=>{
-                
-              this.three= res["message"]
-              console.log(this.products)
-              
+          err => {
+            alert('Something went wrong in Adding product');
+          });
+          // angular
+      this.us.getbook(this.category[2]).subscribe(
+            res => {
+
+              this.three = res.message;
+              console.log(this.products);
+
             },
-            err=>{
-              alert("Something went wrong in Adding product")
-            })
-             //js
-          this.us.getbook(this.category[3]).subscribe(
-            res=>{
-                
-              this.four= res["message"]
-              console.log(this.products)
-              
+            err => {
+              alert('Something went wrong in Adding product');
+            });
+             // js
+      this.us.getbook(this.category[3]).subscribe(
+            res => {
+
+              this.four = res.message;
+              console.log(this.products);
+
             },
-            err=>{
-              alert("Something went wrong in Adding product")
-            })
-            //HtmlCssAndRwd
-            this.us.getbook(this.category[4]).subscribe(
-              res=>{
-                  
-                this.five= res["message"]
-                console.log(this.products)
-                
+            err => {
+              alert('Something went wrong in Adding product');
+            });
+            // HtmlCssAndRwd
+      this.us.getbook(this.category[4]).subscribe(
+              res => {
+
+                this.five = res.message;
+                console.log(this.products);
+
               },
-              err=>{
-                alert("Something went wrong in Adding product")
-              })
-              //MongoDb
-              this.us.getbook(this.category[5]).subscribe(
-                res=>{
-                    
-                  this.six= res["message"]
-                  console.log(this.products)
-                  
+              err => {
+                alert('Something went wrong in Adding product');
+              });
+              // MongoDb
+      this.us.getbook(this.category[5]).subscribe(
+                res => {
+
+                  this.six = res.message;
+                  console.log(this.products);
+
                 },
-                err=>{
-                  alert("Something went wrong in Adding product")
-                })
-            
+                err => {
+                  alert('Something went wrong in Adding product');
+                });
 
 
-    
+
+
   }
 
-  wishlist(product){
-    console.log(product)
-    if(this.userId==null){
-      this.router.navigateByUrl("/login")
+  wishlist(product): any{
+    console.log(product);
+    if (this.userId == null){
+      this.router.navigateByUrl('/login');
     }
   else{
-    product.userId=this.userId;
-    console.log(product)
-   console.log("wishlist ts "+product)
-   this.us.mylist(product).subscribe(
-     res=>{
-      this.toastr.success('book added to wishlist')
-      
+    product.userId = this.userId;
+    console.log(product);
+    console.log('wishlist ts ' + product);
+    this.us.mylist(product).subscribe(
+     res => {
+      this.toastr.success('book added to wishlist');
+
      },
-     err=>{
-       alert("Something went wrong")
-       console.log(err)
+     err => {
+      this.toastr.error('Something went wrong');
+       // alert("Something went wrong")
+      console.log(err);
      }
-   )
+   );
     }
   }
 
- gotoProfile(){
-   this.router.navigateByUrl("/profile")
+ gotoProfile(): any{
+   this.router.navigateByUrl('/profile');
  }
- gotoWishlist(){
-  this.router.navigateByUrl("/wishlist")
+ gotoWishlist(): any{
+  this.router.navigateByUrl('/wishlist');
  }
-getproduct(){
+getproduct(): any{
+  this.spinner.show();
   this.us.getproduct(this.userId).subscribe(
-    res=>{
-      this.spinner.show();
-            setTimeout(() => {
-              this.spinner.hide();
-            }, 1000);
-        
-      this.products= res["message"]
-     
-      let cartnum:[]=this.products
-      this.us.cartvalue=cartnum.length
-     
-      this.num=cartnum.length
+    res => {
+      this.spinner.hide();
+
+      this.products = res.message;
+
+      const cartnum: [] = this.products;
+      this.us.cartvalue = cartnum.length;
+
+      this.num = cartnum.length;
     },
-    err=>{
-      alert("Something went wrong in Adding product")
-    })
+    err => {
+      this.toastr.error('Something went wrong');
+      // alert("Something went wrong in Adding product")
+    });
 }
 
 
-Logout(){
-  
-    
+Logout(): any{
+
+
     localStorage.clear();
-  
-  this.router.navigateByUrl("/login")
+
+    this.router.navigateByUrl('/pre');
 }
 
-viewcart(){
-  if(this.userId!=null)
- { this.router.navigateByUrl("/cart")}
+viewcart(): any{
+  if (this.userId != null)
+ { this.router.navigateByUrl('/cart'); }
  else
  {
-   this.router.navigateByUrl("/login")
+   this.router.navigateByUrl('/login');
  }
 }
 
-myOrders(){
-  if(this.userId!=null)
- { this.router.navigateByUrl("/vieworder")}
+myOrders(): any{
+  if (this.userId != null)
+ { this.router.navigateByUrl('/vieworder'); }
  else
  {
-   this.router.navigateByUrl("/login")
+   this.router.navigateByUrl('/login');
  }
 }
 
-  getdata(){
+  getdata(): any{
     this.us.getproducts().subscribe(
-       res=>{
+       res => {
         this.spinner.show();
-        setTimeout(() => {
-          this.spinner.hide();
-        }, 1000);
-         this.courses= res["message"]
-       
+
+        this.courses = res.message;
+        this.spinner.hide();
        },
-       err=>{
-         alert("Something went wrong in Adding product")
-         console.log(err)
+       err => {
+        this.toastr.error('Something went wrong');
+         // alert("Something went wrong in Adding product")
+        console.log(err);
        }
-     )
+     );
    }
 
 
-   
-   findcat(obj){
-    this.select="Category";
-    this.searchTerm=obj.ct;
-    console.log("select : "+this.select);
-    console.log("search term : "+this.searchTerm)
-   /* this.bss=false
-    let cat=obj.ct
-         console.log(cat);
-         this.us.getbook(cat).subscribe(
-          res=>{
-            this.catcourses= res["message"];
-            console.log(this.catcourses)
-            console.log("success")
-          },
-          err=>{
-            alert("Something went wrong")
-            console.log(err.message)
-          }
-         )*/
+
+   findcat(obj): any{
+    this.select = 'Category';
+    this.searchTerm = obj.ct;
+    console.log('select : ' + this.select);
+    console.log('search term : ' + this.searchTerm);
+
    }
 
 
-  onSubmit(formRef){
+  onSubmit(formRef): any{
     console.log(formRef);
      // this.router.navigateByUrl("/cart")
-      if(this.userId==null){
-       this.router.navigateByUrl("/login")
+    if (this.userId == null){
+       this.router.navigateByUrl('/login');
        }
          else{
-          
-           let userObj=formRef
-           let obj={
-             username:this.username,
-             bookname:userObj.booktitle,
-             author:userObj.author,
-             userId:this.userId,
-             price:userObj.price,
-             publisher:userObj.publisher,
-             publishdate:userObj.publishdate,
-             rating:userObj.rating,
-            
-             
-             image:userObj.image,
-             quantity:1,
-             }
-     
-           console.log(obj)
-       
-               this.us.tocart(obj).subscribe(
-                 res=>{
-                      
-                       if(res["message"]=="product Added"){
-                       this.toastr.success('Book added to cart') 
- 
- 
+
+           const userObj = formRef;
+           const obj = {
+             username: this.username,
+             bookname: userObj.bookname,
+             author: userObj.author,
+             userId: this.userId,
+             price: userObj.price,
+             publisher: userObj.publisher,
+             publishdate: userObj.publishdate,
+             rating: userObj.rating,
+
+
+             image: userObj.image,
+             quantity: 1,
+             };
+
+           console.log(obj);
+
+           this.us.tocart(obj).subscribe(
+                 res => {
+
+                       if (res.message === 'product Added'){
+                       this.toastr.success('Book added to cart');
+
+
                        }
                  },
-                 err=>{
-                   alert("Something went wrong in Adding Product")
-                   console.log(err)
+                 err => {
+                   alert('Something went wrong in Adding Product');
+                   console.log(err);
                  }
-               )
+               );
          }
-         
+
    }
 
-  DeleteItem(i){
-    console.log("product is ",this.courses[i])
+  DeleteItem(i): any{
+    console.log('product is ', this.courses[i]);
   }
 
-  viewItem(i){
-    let userObj=this.courses[i]
-    console.log(userObj)
-    this.us.toview=userObj;
-    this.view=this.us.toview
-    this.router.navigateByUrl("/viewproducts")
-    console.log("product is ",userObj)
+  viewItem(i): any{
+    const userObj = this.courses[i];
+    console.log(userObj);
+    this.us.toview = userObj;
+    this.view = this.us.toview;
+    this.router.navigateByUrl('/viewproducts');
+    console.log('product is ', userObj);
   }
 
 
-   addto(formRef){
-    let userObj=formRef.value
+   addto(formRef): any{
+    const userObj = formRef.value;
     this.us.tocart(userObj).subscribe(
-      res=>{
-            if(res["message"]=="user existed"){
-                alert("user name is already taken... choose different user name")
-                formRef.clear();
+      res => {
+            if (res.message === 'user existed'){
+              this.toastr.success('user name is already taken... choose different user name');
+                // alert("user name is already taken... choose different user name")
+              formRef.clear();
             }
-            if(res["message"]=="user created"){
-              alert("Registration success")
+            if (res.message === 'user created'){
+              this.toastr.success('Registration success');
 
-              //navigate to login component
-              this.router.navigateByUrl("/login")
+              // alert("Registration success")
+
+              // navigate to login component
+              this.router.navigateByUrl('/login');
             }
 
       },
-      err=>{
-        alert("Something went wrong in user creation")
-        console.log(err)
+      err => {
+        alert('Something went wrong in user creation');
+        console.log(err);
       }
-    )
+    );
    }
 }

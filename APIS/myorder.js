@@ -6,7 +6,8 @@ myorderApiObj.use(exp.json())
 
 myorderApiObj.post("/addto",errHandler( async(req,res,next)=>{
     let myorderCollectionObj=req.app.get("myorderCollectionObj")
-    let obj=req.body;         
+    let obj=req.body; 
+    console.log("api "+obj)        
             let success=await myorderCollectionObj.insertOne(obj)
             res.send({message:"Order Placed Successfully"})
     console.log("product is ", obj)

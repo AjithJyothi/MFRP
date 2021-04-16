@@ -21,7 +21,7 @@
   </div>
 </nav>
 <div class="container" style="padding-top: 20px; border: turquoise; border-style: solid;height: 900px;">
-    <button  (click)="back()">Back</button>
+    <button class="btn btn-primary" (click)="back()">Back</button>
   <h1 class="text-center"><b>Myorders</b></h1>
    <div class="row mt-5" >
         <div class="col-sm-4 " style="padding-bottom: 20px;" *ngFor="let get of orders; let i= index" >
@@ -39,10 +39,11 @@
                     <li>{{get.publisher}}</li>
                     <li>{{get.language}}</li>
                     <li>{{get.rating}}</li>
+                    <li>{{get.bookId}}</li>
                   </ul>
                   
                   <p class="card-text"><b>Rs.{{get.price}}</b></p> 
-                  <button class="btn btn-success" (click)="viewItem(i)">View</button>
+              
                 </div>      
               </div>
             </div>

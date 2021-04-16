@@ -1,12 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <img src="https://i.postimg.cc/652svFLG/books-1.png"   alt="" width="45px" height="45px">
+    <a class="navbar-brand active" routerLink="pre"> Book Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" style="color: black; text-decoration: none;" data-bs-toogle="collapse" data-bs-target="#navbarSupportedContent" routerLink="/home">Home <img src="https://i.postimg.cc/BnbCbGxd/home-1.png"   alt="" height="15px" width="15px">  </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="Logout()" style="color: black; text-decoration: none;" data-bs-toogle="collapse" data-bs-target=".navbar-collapse.show" routerLink="/login">LogOut  <img src="https://i.postimg.cc/52k5hkFb/edit.png"   alt="" height="23px" width="23px"></a>
+        </li>
+      </ul>
+      
+    <li class="nav-item dropdown  p-3  d-flex">
+      <button class="btn  dropdown-toggle bg-primary " style="color: black;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{username}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item " style="text-decoration: none;" (click)="gotoProfile()">My Profile</a>
+        <a class="dropdown-item" style="text-decoration: none;" (click)="viewcart()">My Cart</a>
+        <a class="dropdown-item" style="text-decoration: none;" (click)="gotoWishlist()">Wish List</a>
+        <a class="dropdown-item" style="text-decoration: none;" (click)="myOrders()">My Orders</a>
+        <a class="dropdown-item " style="text-decoration: none;" (click)="Logout()">Log Out</a>
+      </div>
+      <button class="btn bg-primary float-end" (click)="viewcart()"><img src="https://i.postimg.cc/FsC0hJJS/shopping-cart-empty-side-view.png" alt="" width="20px" height="20px"> {{num}}</button>
+    </li>
+    
+    </div>
+  </div>
+</nav>
 
-
-<div class="container">
-  <div class="container-fluid text-center row align-items-start" *ngIf="num!==0">
+<h1 style="text-align: center;"><i><b>Mycart</b></i></h1>
+<div class="container mt-3">
+  <div class="container-fluid text-center row align-items-start " *ngIf="num!==0">
     <div class="col">
       <h4>Total Cart Value: <b>Rs.{{total}}/-</b> </h4>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-warning  mx-auto" data-toggle="modal" data-target="#myModal">Confirm Payment & Buy</button>
+      <button type="button" (click)="placeOrder(products)" class="btn btn-warning  mx-auto" data-toggle="modal" data-target="#myModal">Confirm Payment & Buy</button>
     </div>
     <div class="col">
     <button class="btn btn-info float-end" (click)="goback()">Back</button>
@@ -24,24 +58,19 @@
 <h4 class="modal-title" >Congratulations, Product ordered successfully</h4>
 <button type="button" class="close float-end" data-dismiss="modal">&times;</button>
 </div>
-<!-- <div class="modal-body">
-<h2>Congratulations, <br> Product ordered successfully</h2>
-</div>
-<div class="modal-footer">
-<button  class="btn btn-default" data-dismiss="modal">Ok</button>
-</div>-->
+
 </div>
 
 </div>
 </div>
 
 
-<div class="container">
+<div class="container" style="padding-bottom: 30%;">
     <div class="col-md-12 p-3" style="border-style: solid;" *ngFor="let obj of products; let i=index">
       <div class="col-md-4"><img [src]="obj.image" width="100%"></div>
       <div class="col-md-4">
         <ul>
-          <li><h1>Book Name : {{obj.bookname}}</h1></li>
+          <h1>Book Name : {{obj.bookname}}</h1>
           <li>Author: {{obj.author}}</li>
           <li>Publisher: {{obj.publisher}}</li>
           <li>Publish Date: {{obj.publishdate}}</li>
@@ -50,7 +79,7 @@
 
         <div class="col-3">
                             
-          <button type="button button-danger" class="btn btn-danger " (click)="delete(obj,i)">Remove</button>
+          <button type="button button-danger" class="btn btn-danger " (click)="delete(obj)">Remove</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -69,7 +98,7 @@
     </div>
     </div>
     
-    <div class="container-fluid mt-5 tet-center" *ngIf="num==0">
+    <div class="container-fluid mt-5 text-center " style="padding-bottom: 40%;" *ngIf="num==0">
       <h1 class="text-center">Your <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> cart is empty!!</h1>
       <p class="text-center">Add items to it now</p>
       <button class="btn btn-success mx-auto me-auto d-block float-center" (click)="goback()">Shop now</button>

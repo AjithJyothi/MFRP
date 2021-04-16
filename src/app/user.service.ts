@@ -6,115 +6,115 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  constructor(private hc:HttpClient){}
-  toview:any;
-  cartvalue:any;
-  name:string;
-  //user registration
-  createUser(userObj:object):Observable<any>{
-  return   this.hc.post("/user/register",userObj)
+  constructor(private hc: HttpClient){}
+  toview: any;
+  cartvalue: any;
+  name: string;
+  // user registration
+  createUser(userObj: object): Observable<any>{
+  return   this.hc.post('/user/register', userObj);
   }
-  createUser1(userObj:object):Observable<any>{
-    return   this.hc.post("/user/activity",userObj)
+  createUser1(userObj: object): Observable<any>{
+    return   this.hc.post('/user/activity', userObj);
     }
 
-    loginUser(userCredObj:object):Observable<any>{
-      console.log("service")
-      console.log(userCredObj)
-      return   this.hc.post("/user/login",userCredObj)
+    loginUser(userCredObj: object): Observable<any>{
+      console.log('service');
+      console.log(userCredObj);
+      return   this.hc.post('/user/login', userCredObj);
     }
 
-  createactivity(useractivityObj:object):Observable<any>{
-    return this.hc.post("/user/activity",useractivityObj)
+  createactivity(useractivityObj: object): Observable<any>{
+    return this.hc.post('/user/activity', useractivityObj);
   }
 
-  getproduct(userId: string):Observable<any>{
-    return this.hc.get("/cart/getproduct/"+userId);
+  getproduct(userId: string): Observable<any>{
+    return this.hc.get('/cart/getproduct/' + userId);
   }
 
-  deleteproduct(userId: string):Observable<any>{
-    return this.hc.delete("/cart/deleteproduct/"+userId);
+  deleteproduct(userId: string): Observable<any>{
+    return this.hc.delete('/cart/deleteproduct/' + userId);
   }
 
-  changepassword(obj:any):Observable<any>{
-    return this.hc.post("/user/forgetpassword",obj);
+  changepassword(obj: any): Observable<any>{
+    return this.hc.post('/user/forgetpassword', obj);
   }
 
-  addproduct(obj:object):Observable<any>{
-    return this.hc.post("/admin/products",obj)
+  addproduct(obj: object): Observable<any>{
+    return this.hc.post('/admin/products', obj);
   }
-  tocart(obj:object):Observable<any>{
-    return this.hc.post("/cart/addto",obj)
-  }
-
-  getcourse():Observable<any>{
-    return this.hc.get("/admin/getcourses")
+  tocart(obj: object): Observable<any>{
+    return this.hc.post('/cart/addto', obj);
   }
 
-  getproducts():Observable<any>{
-    return this.hc.get("/admin/getproducts")
+  getcourse(): Observable<any>{
+    return this.hc.get('/admin/getcourses');
   }
 
-  myOrder(product:object):Observable<any>{
-    return this.hc.post("/myorder/addto",product);
+  getproducts(): Observable<any>{
+    return this.hc.get('/admin/getproducts');
+  }
+
+  myOrder(product: object): Observable<any>{
+    return this.hc.post('/myorder/addto', product);
  }
- mylist(product:object):Observable<any>{
-  return this.hc.post("/wishlist/addto",product);
+ mylist(product: object): Observable<any>{
+  return this.hc.post('/wishlist/addto', product);
 }
-viewlist(userId: string):Observable<any>{
-  return this.hc.get("/wishlist/viewlist/"+userId);
+viewlist(userId: string): Observable<any>{
+  return this.hc.get('/wishlist/viewlist/' + userId);
 }
-vieworders(userId: string):Observable<any>{
-  return this.hc.get("/myorders/vieworder/"+userId);
+vieworders(userId: string): Observable<any>{
+  return this.hc.get('/myorders/vieworder/' + userId);
 }
 
 
-  getbook(category: string):Observable<any>{
-    return this.hc.get("/admin/getbooks/"+category );
+  getbook(category: string): Observable<any>{
+    return this.hc.get('/admin/getbooks/' + category );
   }
 
-  getOneBook(bookId:string){
+  getOneBook(bookId: string): any{
     console.log(bookId);
-    return this.hc.get("/admin/onebook/"+bookId)
+    return this.hc.get('/admin/onebook/' + bookId);
   }
 
-  getOneUser(userId:string){
-    console.log("service"+userId);
-    return this.hc.get("/user/profile/"+userId)
+  getOneUser(userId: string): any{
+    console.log('service' + userId);
+    return this.hc.get('/user/profile/' + userId);
   }
 
 
-editBook(obj:object):Observable<any>{
-  return this.hc.put("/admin/updatebook",obj)
+editBook(obj: object): Observable<any>{
+  return this.hc.put('/admin/updatebook', obj);
  }
 
- editUser(obj:object):Observable<any>{
-  return this.hc.put("/user/updateprofile",obj)
+ editUser(obj: object): Observable<any>{
+  return this.hc.put('/user/updateprofile', obj);
  }
 
- deleteBook(obj:object):Observable<any>{
-   console.log("from delete product",obj)
-   return this.hc.post("/admin/removebook",obj)
+ deleteBook(obj: object): Observable<any>{
+   console.log('from delete product', obj);
+   return this.hc.post('/admin/removebook', obj);
  }
 
- setmyname(name:string){
-   this.name=name;
-   console.log("setmyname"+this.name);
+ setmyname(name: string): any{
+   this.name = name;
+   console.log('setmyname' + this.name);
  }
 
- getmyname(){
+ getmyname(): any{
    return this.name;
  }
 
-  viewOrder(userId:string):Observable<any>{
-    return this.hc.get("/myorder/vieworder/"+userId);
+  viewOrder(userId: string): Observable<any>{
+    return this.hc.get('/myorder/vieworder/' + userId);
   }
 
-  userProfile(userId:string):Observable<any>{
-      return this.hc.get("/user/profile/"+userId)
+  userProfile(userId: string): Observable<any>{
+      return this.hc.get('/user/profile/' + userId);
   }
-  deleteCartProduct(obj):Observable<any>{
-    return this.hc.post("/cart/deleteproduct",obj);
+  deleteCartProduct(obj): Observable<any>{
+    return this.hc.post('/cart/deleteproduct', obj);
   }
 
 }
