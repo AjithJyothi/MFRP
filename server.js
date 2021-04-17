@@ -87,4 +87,5 @@ app.use((err,req,res,next)=>{
 })
 
 //assign portnumber
-app.listen(process.env.port,()=>console.log("web server on port 5000"))
+app.listen(process.env.PORT||8080)
+//app.listen(process.env.port || 8080,()=>console.log("web server on port 5000"))
